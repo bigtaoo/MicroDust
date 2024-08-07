@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package ET;
+
+//ResponseType NetClient2Main_MicroDust_Login
+message Main2NetClient_MicroDust_Login // IRequest
+{
+	int32 RpcId = 1;
+	int32 OwnerFiberId = 2;
+	string Account = 3;
+	string Password = 4;
+}
+
+message NetClient2Main_MicroDust_Login // IResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	int64 PlayerId = 4;
+	string UserId = 5;
+}

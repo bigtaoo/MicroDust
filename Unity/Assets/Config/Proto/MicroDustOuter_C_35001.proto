@@ -1,0 +1,250 @@
+syntax = "proto3";
+package ET;
+
+//ResponseType G2C_MicroDust_Ping
+message C2G_MicroDust_Ping // ISessionRequest
+{
+	int32 RpcId = 1;
+}
+message G2C_MicroDust_Ping // ISessionResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	int64 Time = 4;
+}
+
+//ResponseType R2C_MicroDust_Login
+message C2R_MicroDust_Login // ISessionRequest
+{
+	int32 RpcId = 1;
+	string  Account = 2;
+	string  Password = 3;
+}
+message R2C_MicroDust_Login // ISessionResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	string Address = 4;
+	int64 Key = 5;
+	int64 GateId = 6;
+}
+
+//ResponseType G2C_MicroDust_LoginGate
+message C2G_MicroDust_LoginGate // ISessionRequest
+{
+	int32 RpcId = 1;
+	int64 Key = 2;
+	int64 GateId = 3;
+}
+message G2C_MicroDust_LoginGate // ISessionResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	int64 PlayerId = 4;
+	string UserId = 5;
+}
+
+//ResponseType G2C_MicroDust_EnterMap
+message C2G_MicroDust_EnterMap // ISessionRequest
+{
+	int32 RpcId = 1;
+}
+message G2C_MicroDust_EnterMap // ISessionResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	string SelfId = 4;
+}
+
+message M2C_MicroDust_StartSceneChange // IMessage
+{
+	int64 SceneInstanceId = 1;
+	string SceneName = 2;	
+}
+
+message MicroDustNumericData
+{
+	int32 Type = 1;
+	int64 Value = 2;
+}
+
+message M2C_MicroDust_PlayerGameInfo // IMessage
+{
+	repeated MicroDustNumericData NumericDatas = 1;
+}
+
+message MicroDustPosition
+{
+	int32 X = 1;
+	int32 Y = 2;
+}
+
+message M2C_MicroDust_MajorCity
+{
+	MicroDustPosition Position = 1;
+}
+
+//ResponseType M2C_MicroDust_RecruitOnce
+message C2M_MicroDust_RecruitOnce // ISessionRequest
+{
+	int32 RpcId = 1;
+	int32 PackId = 2;
+}
+message M2C_MicroDust_RecruitOnce // ISessionResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	int32 HeroConfigId = 4;
+}
+
+//ResponseType M2C_MicroDust_RecruitFive
+message C2M_MicroDust_RecruitFive // ISessionRequest
+{
+	int32 RpcId = 1;
+	int32 PackId = 2;
+}
+message M2C_MicroDust_RecruitFive // ISessionResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	repeated int32 HeroConfigIds = 4;
+}
+
+//ResponseType M2C_MicroDust_RecruitCustomTimes
+message C2M_MicroDust_RecruitCustomTimes // ISessionRequest
+{
+	int32 RpcId = 1;
+}
+message M2C_MicroDust_RecruitCustomTimes // ISessionResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	int32 Spirit = 4;
+	repeated int32 Level4 = 5;
+	int32 Level3Count = 6;
+	int32 Level2Count = 7;
+	int32 Level1Count = 8;
+}
+
+message MicroDustHeroInfo
+{
+	int32 ConfigId = 1;
+	int32 Level = 2;
+	int32 Star = 3;
+	string Id = 4;
+}
+
+//ResponseType M2C_MicroDust_Heros
+message C2M_MicroDust_Heros // ISessionRequest
+{
+	int32 RpcId = 1;
+}
+message M2C_MicroDust_Heros // ISessionResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	repeated MicroDustHeroInfo heros = 4;
+}
+
+//ResponseType M2C_MicroDust_ConfigureArmy
+message C2M_MicroDust_ConfigureArmy // ILocationRequest
+{
+	int32 RpcId = 1;
+	int32 Army = 2;
+	int32 Position = 3;
+	string HeroId = 4;
+}
+message M2C_MicroDust_ConfigureArmy // ILocationResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+}
+
+message MicroDustArmyMessage
+{
+	repeated string HeroIds = 1;
+}
+message M2C_MicroDustArmies // IMessage
+{
+	repeated MicroDustArmyMessage Arimes = 1;
+}
+
+message MicroDustMapTile
+{
+	int PosX = 1;
+	int PosY = 2;
+	string TileType = 3;
+}
+
+//ResponseType G2C_MicroDustInitializeMap_Response
+message C2G_MicroDustInitializeMap_Request // ISessionRequest
+{
+	int RpcId = 1;
+	repeated MicroDustMapTile MapTiles = 2;
+}
+message G2C_MicroDustInitializeMap_Response // ISessionResponse
+{
+	int RpcId = 1;
+	int Error = 2;
+	string Message = 3;
+}
+
+//ResponseType M2C_MicroDust_ArmyCommand
+message C2M_MicroDust_ArmyCommand // ILocationRequest
+{
+	int32 RpcId = 1;
+	int32 Army = 2;
+	MicroDustPosition Target = 3;
+}
+message M2C_MicroDust_ArmyCommand // ILocationResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	repeated MicroDustPosition Path = 4;
+	int32 Time = 4;
+}
+
+message MicroDustSkillInfo
+{
+	string SkillId = 1;
+	int32 SkillConfigId = 2;
+	string UsedByHeroId = 3;
+}
+
+//ResponseType G2C_MicroDustGenerateSkill_Response
+message C2G_MicroDustGenerateSkill_Request // ISessionRequest
+{
+	int RpcId = 1;
+	string HeroId = 2;
+}
+message G2C_MicroDustGenerateSkill_Response // ISessionResponse
+{
+	int RpcId = 1;
+	int Error = 2;
+	string Message = 3;
+	MicroDustSkillInfo GeneratedSkill = 4;
+	string HeroId = 5;
+}
+
+//ResponseType G2C_MicroDustSkills_Response
+message C2G_MicroDustSkills_Request // ISessionRequest
+{
+	int RpcId = 1;
+}
+message G2C_MicroDustSkills_Response // ISessionResponse
+{
+	int RpcId = 1;
+	int Error = 2;
+	string Message = 3;
+	repeated MicroDustSkillInfo Skills = 4;
+}

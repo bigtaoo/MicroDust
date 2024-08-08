@@ -22,7 +22,7 @@
 
         private static async ETTask TimeoutRemoveKey(this MicroDustGateSessionKeyComponent self, long key)
         {
-            await self.Fiber().TimerComponent.WaitAsync(20000);
+            await self.Root().GetComponent<TimerComponent>().WaitAsync(20000);
             self.sessionKey.Remove(key);
         }
     }

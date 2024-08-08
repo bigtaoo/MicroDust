@@ -1,5 +1,4 @@
 ﻿using MongoDB.Driver;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace ET.Server
 {
-    [EntitySystemOf(typeof(DBComponent))]
+    //[EntitySystemOf(typeof(DBComponent))]
     [FriendOf(typeof(DBComponent))]
     public static partial class DBComponentSystem
     {
@@ -16,7 +15,7 @@ namespace ET.Server
             Fiber fiber = self.Fiber();
             if (entity == null)
             {
-                fiber.Error($"save entity is null: {typeof(T).FullName}");
+                Log.Error($"save entity is null: {typeof(T).FullName}");
                 return;
             }
 
@@ -33,7 +32,7 @@ namespace ET.Server
                 dbObject.Entities.Add(component);
             }
 
-            using (await fiber.CoroutineLockComponent.Wait(CoroutineLockType.DB, entity.Id % DBComponent.TaskCount))
+            using (await self.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.DB, entity.Id % DBComponent.TaskCount))
             {
                 await self.GetCollection(collection).ReplaceOneAsync(d => d.Id == entity.Id, dbObject, new ReplaceOptions { IsUpsert = true });
             }
@@ -42,7 +41,7 @@ namespace ET.Server
         public static async ETTask<T> QueryWithComponents<T>(this DBComponent self, Entity entity, Expression<Func<MicroDustDBObject, bool>> filter, string collection) where T : Entity
         {
             List<MicroDustDBObject> result;
-            using (await self.Fiber().CoroutineLockComponent.Wait(CoroutineLockType.DB, RandomGenerator.RandInt64() % DBComponent.TaskCount))
+            using (await self.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.DB, RandomGenerator.RandInt64() % DBComponent.TaskCount))
             {
                 var cursor = await self.GetCollection<MicroDustDBObject>(collection).FindAsync(filter);
                 result = await cursor.ToListAsync();

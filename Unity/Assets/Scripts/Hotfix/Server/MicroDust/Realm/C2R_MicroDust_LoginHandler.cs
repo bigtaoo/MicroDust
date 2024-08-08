@@ -15,7 +15,7 @@ namespace ET.Server
                 return;
             }
             var config = RealmGateAddressHelper.GetGate(session.Zone(), request.Account);
-            session.Fiber().Debug($"gate address: {config}");
+            Log.Debug($"gate address: {config}");
 
             var g2RGetLoginKey = (G2R_MicroDust_LoginKey)await session.Fiber().Root.GetComponent<MessageSender>().Call(
                 config.ActorId, new R2G_MicroDust_LoginKey() { Account = request.Account });

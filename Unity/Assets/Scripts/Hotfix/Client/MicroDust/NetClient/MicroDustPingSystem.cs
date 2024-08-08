@@ -46,16 +46,16 @@ namespace ET.Client
 
                     TimeInfo.Instance.ServerMinusClientTime = response.Time + (time2 - time1) / 2 - time2;
 
-                    await fiber.TimerComponent.WaitAsync(2000);
+                    await self.Root().GetComponent<TimerComponent>().WaitAsync(2000);
                 }
                 catch (RpcException e)
                 {
-                    fiber.Info($"ping error: {self.Id} {e.Error}");
+                    Log.Info($"ping error: {self.Id} {e.Error}");
                     return;
                 }
                 catch (Exception e)
                 {
-                    fiber.Error($"ping error: \n{e}");
+                    Log.Error($"ping error: \n{e}");
                 }
             }
         }

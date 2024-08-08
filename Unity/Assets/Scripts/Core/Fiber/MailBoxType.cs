@@ -5,5 +5,6 @@
         OrderedMessage = 1,
         UnOrderedMessage,
         GateSession,
+        MicroDustGateSession,
     }
 }

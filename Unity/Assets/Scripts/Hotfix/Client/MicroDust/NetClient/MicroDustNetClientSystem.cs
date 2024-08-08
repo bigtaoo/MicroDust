@@ -56,7 +56,7 @@ namespace ET.Client
                 case IMessage iActorMessage:
                     {
                         // 扔到Main纤程队列中
-                        self.Fiber().MessageInnerSender.Send(new ActorId(self.Fiber().Process, self.OwnerFiberId), iActorMessage);
+                        self.Root().GetComponent<MessageInnerSender>().Send(new ActorId(self.Fiber().Process, self.OwnerFiberId), iActorMessage);
                         break;
                     }
                 default:

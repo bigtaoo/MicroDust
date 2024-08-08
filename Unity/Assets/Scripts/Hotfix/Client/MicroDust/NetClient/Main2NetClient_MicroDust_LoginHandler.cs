@@ -41,7 +41,7 @@ namespace ET.Client
             G2C_MicroDust_LoginGate g2CLoginGate = (G2C_MicroDust_LoginGate)await gateSession.Call(
                 new C2G_MicroDust_LoginGate() { Key = r2CLogin.Key, GateId = r2CLogin.GateId });
 
-            root.Fiber().Debug($"Login to Gate success! playerId: {g2CLoginGate.PlayerId}, userId: {g2CLoginGate.UserId}");
+            Log.Debug($"Login to Gate success! playerId: {g2CLoginGate.PlayerId}, userId: {g2CLoginGate.UserId}");
 
             response.PlayerId = g2CLoginGate.PlayerId;
             response.UserId = g2CLoginGate.UserId;

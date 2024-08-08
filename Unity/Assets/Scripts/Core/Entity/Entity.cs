@@ -979,5 +979,10 @@ namespace ET
                 }
             }
         }
+
+        public void ForceIdInit()
+        {
+            Id = IdGenerater.Instance.GenerateId();
+        }
     }
 }

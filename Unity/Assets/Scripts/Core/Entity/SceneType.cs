@@ -25,6 +25,14 @@ namespace ET
 		RoomRoot = 1 << 18,
 		Watcher = 1 << 19,
 
+		// MicroDust
+		MicroDustGate = 1 << 20,
+		MicroDustRealm = 1 << 21,
+		MicroDustMain = 1 << 22,
+		MicroDust = 1 << 23,
+		MicroDustNetClient = 1 << 24,
+		MicroDustCurrent = 1 << 25,
+
 		// 客户端
 		Demo = 1 << 30,
 		Current = 1L << 31,

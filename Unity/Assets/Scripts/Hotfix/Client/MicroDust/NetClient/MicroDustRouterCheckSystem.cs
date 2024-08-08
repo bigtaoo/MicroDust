@@ -25,7 +25,7 @@ namespace ET.Client
                     return;
                 }
 
-                await fiber.TimerComponent.WaitAsync(1000);
+                await root.GetComponent<TimerComponent>().WaitAsync(1000);
 
                 if (self.InstanceId != instanceId)
                 {
@@ -46,17 +46,17 @@ namespace ET.Client
                     (uint localConn, uint remoteConn) = session.AService.GetChannelConn(sessionId);
 
                     IPEndPoint realAddress = self.GetParent<Session>().RemoteAddress;
-                    fiber.Info($"get recvLocalConn start: {root.Id} {realAddress} {localConn} {remoteConn}");
+                    Log.Info($"get recvLocalConn start: {root.Id} {realAddress} {localConn} {remoteConn}");
 
                     (uint recvLocalConn, IPEndPoint routerAddress) =
                         await MicroDustRouterHelper.GetRouterAddress(root, realAddress, localConn, remoteConn);
                     if (recvLocalConn == 0)
                     {
-                        fiber.Error($"get recvLocalConn fail: {root.Id} {routerAddress} {realAddress} {localConn} {remoteConn}");
+                        Log.Error($"get recvLocalConn fail: {root.Id} {routerAddress} {realAddress} {localConn} {remoteConn}");
                         continue;
                     }
 
-                    fiber.Info($"get recvLocalConn ok: {root.Id} {routerAddress} {realAddress} {recvLocalConn} {localConn} {remoteConn}");
+                    Log.Info($"get recvLocalConn ok: {root.Id} {routerAddress} {realAddress} {recvLocalConn} {localConn} {remoteConn}");
 
                     session.LastRecvTime = TimeInfo.Instance.ClientNow();
 
@@ -64,7 +64,7 @@ namespace ET.Client
                 }
                 catch (Exception e)
                 {
-                    fiber.Error(e);
+                    Log.Error(e);
                 }
             }
         }

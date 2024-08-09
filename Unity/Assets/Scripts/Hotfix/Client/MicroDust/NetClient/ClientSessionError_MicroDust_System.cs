@@ -19,7 +19,7 @@
             }
             var message = NetClient2Main_MicroDust_SessionDispose.Create();
             message.Error = self.GetParent<Session>().Error;
-            fiber.MessageInnerSender.Send(new ActorId(fiber.Process, ConstFiberId.Main), message);
+            self.Root().GetComponent<ProcessInnerSender>().Send(new ActorId(fiber.Process, ConstFiberId.Main), message);
         }
     }
 }

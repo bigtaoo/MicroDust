@@ -18,8 +18,7 @@ namespace ET.Client
                 routerAddressComponent =
                         root.AddComponent<MicroDustRouterAddressComponent, string, int>(ConstValue.RouterHttpHost, ConstValue.RouterHttpPort);
                 await routerAddressComponent.Init();
-                root.AddComponent<MicroDustNetClientComponent, AddressFamily, int>(
-                    routerAddressComponent.RouterManagerIPAddress.AddressFamily, request.OwnerFiberId);
+                root.AddComponent<NetComponent, AddressFamily, NetworkProtocol>(routerAddressComponent.RouterManagerIPAddress.AddressFamily, NetworkProtocol.UDP);
             }
             IPEndPoint realmAddress = routerAddressComponent.GetRealmAddress(account);
 

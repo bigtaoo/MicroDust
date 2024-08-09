@@ -34,7 +34,7 @@
 
             Log.Debug($"Send login with account[{account}] password[{password}]");
 
-            var response = await self.Fiber().MessageInnerSender.Call(
+            var response = await self.Root().GetComponent<ProcessInnerSender>().Call(
                 self.netClientActorId, new Main2NetClient_MicroDust_Login()
             {
                 OwnerFiberId = self.Fiber().Id,
@@ -48,14 +48,14 @@
         {
             MicroDust_A2NetClient_Message a2NetClientMessage = MicroDust_A2NetClient_Message.Create();
             a2NetClientMessage.MessageObject = message;
-            self.Fiber().MessageInnerSender.Send(self.netClientActorId, a2NetClientMessage);
+            self.Root().GetComponent<ProcessInnerSender>().Send(self.netClientActorId, a2NetClientMessage);
         }
 
         public static async ETTask<IResponse> Call(this MicroDustClientSenderComponent self, IRequest request, bool needException = true)
         {
             A2NetClient_MicroDust_Request a2NetClientRequest = A2NetClient_MicroDust_Request.Create();
             a2NetClientRequest.MessageObject = request;
-            A2NetClient_MicroDust_Response a2NetClientResponse = await self.Fiber().MessageInnerSender.Call(
+            A2NetClient_MicroDust_Response a2NetClientResponse = await self.Root().GetComponent<ProcessInnerSender>().Call(
                 self.netClientActorId, a2NetClientRequest) as A2NetClient_MicroDust_Response;
             IResponse response = a2NetClientResponse.MessageObject;
 

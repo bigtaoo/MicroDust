@@ -11,7 +11,7 @@ namespace ET.Server
             root.AddComponent<MailBoxComponent, MailBoxType>(MailBoxType.UnOrderedMessage);
             root.AddComponent<TimerComponent>();
             root.AddComponent<CoroutineLockComponent>();
-            root.AddComponent<MessageInnerSender>();
+            root.AddComponent<ProcessInnerSender>();
             root.AddComponent<MessageSender>();
             root.AddComponent<LocationProxyComponent>();
             root.AddComponent<MessageLocationSenderComponent>();
@@ -21,7 +21,7 @@ namespace ET.Server
             Log.Debug("FiberInit  Gate");
 
             StartSceneConfig startSceneConfig = StartSceneConfigCategory.Instance.Get((int)root.Id);
-            root.AddComponent<NetServerComponent, IPEndPoint>(startSceneConfig.InnerIPPort);
+            root.AddComponent<NetComponent, IPEndPoint, NetworkProtocol>(startSceneConfig.InnerIPPort, NetworkProtocol.UDP);
             await ETTask.CompletedTask;
         }
     }

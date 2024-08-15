@@ -12,17 +12,19 @@ namespace ET.Client
             try
             {
                 var currentScene = root.MicroDustCurrentScene();
-                var resourcesComponent = root.GetComponent<ResourcesComponent>();
+                var resourcesLoaderComponent = currentScene.GetComponent<ResourcesLoaderComponent>();
 
-                await resourcesComponent.LoadBundleAsync($"{currentScene.Name}.unity3d");
-                await SceneManager.LoadSceneAsync(currentScene.Name);
+                await resourcesLoaderComponent.LoadSceneAsync($"Assets/Bundles/Scenes/{currentScene.Name}.unity", LoadSceneMode.Single);
+
+                //await resourcesComponent.LoadBundleAsync($"{currentScene.Name}.unity3d");
+                //await SceneManager.LoadSceneAsync(currentScene.Name);
 
                 currentScene.AddComponent<MicroDustCameraComponent>();
                 currentScene.AddComponent<MicroDustTileMapComponent>();
             }
             catch (Exception e)
             {
-                root.Fiber.Error(e);
+                Log.Error(e);
             }
         }
     }

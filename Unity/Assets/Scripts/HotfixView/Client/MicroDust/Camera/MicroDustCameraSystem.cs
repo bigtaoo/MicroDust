@@ -23,7 +23,7 @@ namespace ET.Client
                 {
                     return;
                 }
-                UIHelper.RemoveRelatedUIs(self.Root()).Coroutine();
+                //UIHelper.RemoveRelatedUIs(self.Root()).Coroutine();
                 self.IsMouseLeftButtonDown = true;
                 self.LastMousePosition = Input.mousePosition;
                 self.MouseDownPosition = Input.mousePosition;

@@ -8,7 +8,6 @@
             var globalComponent = root.AddComponent<GlobalComponent>();
             root.AddComponent<UIGlobalComponent>();
             root.AddComponent<UIComponent>();
-            root.AddComponent<ResourcesComponent>();
             root.AddComponent<ResourcesLoaderComponent>();
             root.AddComponent<MicroDustClientPlayerComponent>();
             root.AddComponent<MicroDustCurrentSceneComponent>();

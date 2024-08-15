@@ -7,6 +7,7 @@ namespace ET.Server
     {
         public static async ETTask OnBattle(Session session, MicroDustBattleArmy army)
         {
+            await ETTask.CompletedTask;
             var oldArmy = army;
             var record = new StringBuilder();
             record.AppendLine("Start Battle");

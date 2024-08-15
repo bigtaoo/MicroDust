@@ -56,7 +56,7 @@ namespace ET.Client
 
         private static async ETTask OnRecruitSoldiersClick(this MicroDustMajorCityUIComponent self)
         {
-
+            await UIHelper.Create(self.Root(), UIType.MicroDustBuilding, UILayer.Mid);
         }
 
         private static async ETTask OnBuildBuildingsClick(this MicroDustMajorCityUIComponent self)

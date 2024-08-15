@@ -11,7 +11,7 @@
         "Unity.Hotfix",
         "Unity.ModelView",
         "YooAsset",
-        "TextMesh Pro"
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

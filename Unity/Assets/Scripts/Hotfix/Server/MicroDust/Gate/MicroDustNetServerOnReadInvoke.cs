@@ -3,8 +3,8 @@ using System;
 
 namespace ET.Server
 {
-    [Event(SceneType.MicroDustGate | SceneType.MicroDustRealm)]
-    public class MicroDustNetServerOnReadEvent : AInvokeHandler<NetComponentOnRead>
+    [Invoke((long)(SceneType.MicroDustGate | SceneType.MicroDustRealm))]
+    public class MicroDustNetServerOnReadInvoke : AInvokeHandler<NetComponentOnRead>
     {
         public override void Handle(NetComponentOnRead args)
         {

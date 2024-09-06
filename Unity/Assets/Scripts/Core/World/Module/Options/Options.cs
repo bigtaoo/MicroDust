@@ -16,6 +16,8 @@ namespace ET
         
         Demo,
         LockStep,
+
+        MicroDustMain,
     }
     
     public class Options: Singleton<Options>

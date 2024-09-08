@@ -14,6 +14,7 @@
     <PropertyGroup>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+        <BaseOutputPath>C:\Users\Tao Wang\Documents\microdust\Tools\converter</BaseOutputPath>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">

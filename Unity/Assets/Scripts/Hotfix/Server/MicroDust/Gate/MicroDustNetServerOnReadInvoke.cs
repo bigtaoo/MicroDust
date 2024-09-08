@@ -1,9 +1,9 @@
-﻿using MongoDB.Bson;
-using System;
+﻿using System;
 
 namespace ET.Server
 {
-    [Invoke((long)(SceneType.MicroDustGate | SceneType.MicroDustRealm))]
+   // [Invoke((long)(SceneType.MicroDustGate | SceneType.MicroDustRealm))]
+    [Invoke((long)SceneType.MicroDustGate)]
     public class MicroDustNetServerOnReadInvoke : AInvokeHandler<NetComponentOnRead>
     {
         public override void Handle(NetComponentOnRead args)

@@ -1,11 +1,11 @@
 {
   "runtimeTarget": {
-    "name": ".NETCoreApp,Version=v7.0",
+    "name": ".NETCoreApp,Version=v8.0",
     "signature": ""
   },
   "compilationOptions": {},
   "targets": {
-    ".NETCoreApp,Version=v7.0": {
+    ".NETCoreApp,Version=v8.0": {
       "Tool/1.0.0": {
         "dependencies": {
           "Core": "1.0.0",
@@ -52,21 +52,21 @@
           }
         }
       },
-      "MemoryPack/1.9.13": {
+      "MemoryPack/1.10.0": {
         "dependencies": {
-          "MemoryPack.Core": "1.9.13",
-          "MemoryPack.Generator": "1.9.13"
+          "MemoryPack.Core": "1.10.0",
+          "MemoryPack.Generator": "1.10.0"
         }
       },
-      "MemoryPack.Core/1.9.13": {
+      "MemoryPack.Core/1.10.0": {
         "runtime": {
           "lib/net7.0/MemoryPack.Core.dll": {
-            "assemblyVersion": "1.9.13.0",
-            "fileVersion": "1.9.13.0"
+            "assemblyVersion": "1.10.0.0",
+            "fileVersion": "1.10.0.0"
           }
         }
       },
-      "MemoryPack.Generator/1.9.13": {},
+      "MemoryPack.Generator/1.10.0": {},
       "Microsoft.CodeAnalysis.Analyzers/3.3.2": {},
       "Microsoft.CodeAnalysis.Common/4.0.1": {
         "dependencies": {
@@ -422,14 +422,17 @@
           "ThirdParty": "1.0.0"
         },
         "runtime": {
-          "Core.dll": {}
+          "Core.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": ""
+          }
         }
       },
       "ThirdParty/1.0.0": {
         "dependencies": {
           "CommandLineParser": "2.8.0",
           "EPPlus": "5.8.8",
-          "MemoryPack": "1.9.13",
+          "MemoryPack": "1.10.0",
           "Microsoft.CodeAnalysis.CSharp": "4.0.1",
           "Microsoft.CodeAnalysis.Common": "4.0.1",
           "MongoDB.Driver": "2.17.1",
@@ -437,7 +440,10 @@
           "SharpZipLib": "1.3.3"
         },
         "runtime": {
-          "ThirdParty.dll": {}
+          "ThirdParty.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": ""
+          }
         }
       },
       "Core.Reference/1.0.0.0": {
@@ -485,26 +491,26 @@
       "path": "epplus/5.8.8",
       "hashPath": "epplus.5.8.8.nupkg.sha512"
     },
-    "MemoryPack/1.9.13": {
+    "MemoryPack/1.10.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-aLZgYHIZ01egF4pdJO7lL7oDbv6PKU4hDDO4G99dbiTuSwTQDnnTfAzNT67zwnIK+iffRxVIs/jmvvKtDIVtzQ==",
-      "path": "memorypack/1.9.13",
-      "hashPath": "memorypack.1.9.13.nupkg.sha512"
+      "sha512": "sha512-QgvbIRqAXUvp4/3WcFahjOM3Hy42Ma2OxFsXitstc5XGHDpEl6zdV8XedxbBpvl29sS++i3BzT71/8ET1SyBvg==",
+      "path": "memorypack/1.10.0",
+      "hashPath": "memorypack.1.10.0.nupkg.sha512"
     },
-    "MemoryPack.Core/1.9.13": {
+    "MemoryPack.Core/1.10.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-p2kKNc1jJyNAn8ygQsVEBcz3icCkH5+jqinXMGsSaGvkCYgEzcYuEFBC21ExZw3Gk1uf8gKhzZk2pIl/bmnKvA==",
-      "path": "memorypack.core/1.9.13",
-      "hashPath": "memorypack.core.1.9.13.nupkg.sha512"
+      "sha512": "sha512-MxQ7jag9AOXyAbq7DGvaJBANINLxnkzibOMuwdYAjQDaeIWamIi8Z/QmkOJGBUPGANjIxv2J07rMsFFnHJW/iQ==",
+      "path": "memorypack.core/1.10.0",
+      "hashPath": "memorypack.core.1.10.0.nupkg.sha512"
     },
-    "MemoryPack.Generator/1.9.13": {
+    "MemoryPack.Generator/1.10.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-1khUb/7bjAy8BRp/N9gwTfnPbdW1vo6vGgtIcb3/P1JuA8onGIRIdH/0J672J9NZRGE0T7wjKNLS32ODw+QpSw==",
-      "path": "memorypack.generator/1.9.13",
-      "hashPath": "memorypack.generator.1.9.13.nupkg.sha512"
+      "sha512": "sha512-U6J+mUb95KVO+ytZECLYJ4awuypfiGwNvWQDaEid3fKOz0X5GGQsLyKE4A9CyMqU5SZKri+Md9YcLGYMCqvkKA==",
+      "path": "memorypack.generator/1.10.0",
+      "hashPath": "memorypack.generator.1.10.0.nupkg.sha512"
     },
     "Microsoft.CodeAnalysis.Analyzers/3.3.2": {
       "type": "package",

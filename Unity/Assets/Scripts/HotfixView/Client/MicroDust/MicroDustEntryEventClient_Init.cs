@@ -17,6 +17,7 @@
             var sceneType = EnumHelper.FromString<SceneType>(globalComponent.GlobalConfig.AppType.ToString());
             root.SceneType = sceneType;
 
+            Log.Warning("Publish app start finished.");
             await EventSystem.Instance.PublishAsync(root, new MicroDustAppStartFinished());
         }
     }

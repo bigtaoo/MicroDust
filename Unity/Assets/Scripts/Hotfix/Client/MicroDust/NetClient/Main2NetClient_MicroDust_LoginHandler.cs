@@ -23,9 +23,12 @@ namespace ET.Client
             IPEndPoint realmAddress = routerAddressComponent.GetRealmAddress(account);
 
             R2C_MicroDust_Login r2CLogin;
+            var loginRequest = C2R_MicroDust_Login.Create();
+            loginRequest.Account = account;
+            loginRequest.Password = password;
             using (Session session = await MicroDustRouterHelper.CreateRouterSession(root, realmAddress))
             {
-                r2CLogin = (R2C_MicroDust_Login)await session.Call(new C2R_MicroDust_Login() { Account = account, Password = password });
+                r2CLogin = (R2C_MicroDust_Login)await session.Call(loginRequest);
             }
 
             if (r2CLogin.Error == 1)
@@ -37,8 +40,10 @@ namespace ET.Client
             Session gateSession = await MicroDustRouterHelper.CreateRouterSession(root, NetworkHelper.ToIPEndPoint(r2CLogin.Address));
             gateSession.AddComponent<MicroDustClientSessionErrorComponent>();
             root.AddComponent<MicroDustSessionComponent>().Session = gateSession;
-            G2C_MicroDust_LoginGate g2CLoginGate = (G2C_MicroDust_LoginGate)await gateSession.Call(
-                new C2G_MicroDust_LoginGate() { Key = r2CLogin.Key, GateId = r2CLogin.GateId });
+            var loginGateRequest = C2G_MicroDust_LoginGate.Create();
+            loginGateRequest.Key = r2CLogin.Key;
+            loginGateRequest.GateId = r2CLogin.GateId;
+            G2C_MicroDust_LoginGate g2CLoginGate = (G2C_MicroDust_LoginGate)await gateSession.Call(loginGateRequest);
 
             Log.Debug($"Login to Gate success! playerId: {g2CLoginGate.PlayerId}, userId: {g2CLoginGate.UserId}");
 

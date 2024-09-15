@@ -23,6 +23,9 @@ namespace ET
         public StartSceneConfig Match;
         
         public StartSceneConfig Benchmark;
+
+        public List <StartSceneConfig> MicroDustRealms = new();
+        public List<StartSceneConfig> MicroDustRouters = new();
         
         public List<StartSceneConfig> GetByProcess(int process)
         {
@@ -59,6 +62,7 @@ namespace ET
                         break;
                     case SceneType.Router:
                         this.Routers.Add(startSceneConfig);
+                        this.MicroDustRouters.Add(startSceneConfig);
                         break;
                     case SceneType.Map:
                         this.Maps.Add(startSceneConfig);
@@ -69,6 +73,9 @@ namespace ET
                     case SceneType.BenchmarkServer:
                         this.Benchmark = startSceneConfig;
                         break;
+                    case SceneType.MicroDustRealm:
+                        this.MicroDustRealms.Add(startSceneConfig);
+                        break; 
                 }
             }
         }

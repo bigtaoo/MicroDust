@@ -21,12 +21,13 @@ namespace ET.Client
                 root.AddComponent<NetComponent, AddressFamily, NetworkProtocol>(routerAddressComponent.RouterManagerIPAddress.AddressFamily, NetworkProtocol.UDP);
             }
             IPEndPoint realmAddress = routerAddressComponent.GetRealmAddress(account);
+            NetComponent netComponent = root.GetComponent<NetComponent>();
 
             R2C_MicroDust_Login r2CLogin;
             var loginRequest = C2R_MicroDust_Login.Create();
             loginRequest.Account = account;
             loginRequest.Password = password;
-            using (Session session = await MicroDustRouterHelper.CreateRouterSession(root, realmAddress))
+            using (Session session = await netComponent.CreateMicroDustRouterSession(realmAddress, account, password))
             {
                 r2CLogin = (R2C_MicroDust_Login)await session.Call(loginRequest);
             }
@@ -37,7 +38,7 @@ namespace ET.Client
                 return;
             }
 
-            Session gateSession = await MicroDustRouterHelper.CreateRouterSession(root, NetworkHelper.ToIPEndPoint(r2CLogin.Address));
+            Session gateSession = await netComponent.CreateMicroDustRouterSession(NetworkHelper.ToIPEndPoint(r2CLogin.Address), account, password);
             gateSession.AddComponent<MicroDustClientSessionErrorComponent>();
             root.AddComponent<MicroDustSessionComponent>().Session = gateSession;
             var loginGateRequest = C2G_MicroDust_LoginGate.Create();

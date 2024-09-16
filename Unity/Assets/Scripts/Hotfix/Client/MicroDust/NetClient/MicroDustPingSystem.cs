@@ -25,14 +25,16 @@ namespace ET.Client
 
             while (true)
             {
-                if (self.InstanceId != instanceId)
-                {
-                    return;
-                }
-
-                long time1 = TimeInfo.Instance.ClientNow();
                 try
                 {
+                    await fiber.Root.GetComponent<TimerComponent>().WaitAsync(2000);
+                    if (self.InstanceId != instanceId)
+                    {
+                        return;
+                    }
+
+                    long time1 = TimeInfo.Instance.ClientNow();
+                
                     var c2GPing = C2G_MicroDust_Ping.Create(true);
                     var response = await session.Call(c2GPing) as G2C_MicroDust_Ping;
 
@@ -45,8 +47,6 @@ namespace ET.Client
                     self.Ping = time2 - time1;
 
                     TimeInfo.Instance.ServerMinusClientTime = response.Time + (time2 - time1) / 2 - time2;
-
-                    await self.Root().GetComponent<TimerComponent>().WaitAsync(2000);
                 }
                 catch (RpcException e)
                 {

@@ -18,6 +18,10 @@ namespace ET.Client
             long instanceId = self.InstanceId;
             Fiber fiber = self.Fiber();
             Scene root = fiber.Root;
+
+            IPEndPoint realAddress = session.RemoteAddress;
+            NetComponent netComponent = root.GetComponent<NetComponent>();
+
             while (true)
             {
                 if (self.InstanceId != instanceId)
@@ -25,7 +29,7 @@ namespace ET.Client
                     return;
                 }
 
-                await root.GetComponent<TimerComponent>().WaitAsync(1000);
+                await fiber.Root.GetComponent<TimerComponent>().WaitAsync(1000);
 
                 if (self.InstanceId != instanceId)
                 {
@@ -45,11 +49,10 @@ namespace ET.Client
 
                     (uint localConn, uint remoteConn) = session.AService.GetChannelConn(sessionId);
 
-                    IPEndPoint realAddress = self.GetParent<Session>().RemoteAddress;
+
                     Log.Info($"get recvLocalConn start: {root.Id} {realAddress} {localConn} {remoteConn}");
 
-                    (uint recvLocalConn, IPEndPoint routerAddress) =
-                        await MicroDustRouterHelper.GetRouterAddress(root, realAddress, localConn, remoteConn);
+                    (uint recvLocalConn, IPEndPoint routerAddress) = await netComponent.GetMicroDustRouterAddress(realAddress, localConn, remoteConn);
                     if (recvLocalConn == 0)
                     {
                         Log.Error($"get recvLocalConn fail: {root.Id} {routerAddress} {realAddress} {localConn} {remoteConn}");

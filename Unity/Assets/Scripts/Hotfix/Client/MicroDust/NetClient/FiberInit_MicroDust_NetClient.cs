@@ -10,6 +10,7 @@
             root.AddComponent<TimerComponent>();
             root.AddComponent<CoroutineLockComponent>();
             root.AddComponent<ProcessInnerSender>();
+            root.AddComponent<FiberParentComponent>();
             await ETTask.CompletedTask;
         }
     }

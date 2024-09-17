@@ -55,6 +55,7 @@ namespace ET
                         this.Realms.Add(startSceneConfig);
                         break;
                     case SceneType.Gate:
+                    case SceneType.MicroDustGate:
                         this.Gates.Add(startSceneConfig.Zone, startSceneConfig);
                         break;
                     case SceneType.Location:

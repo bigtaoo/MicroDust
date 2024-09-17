@@ -5,7 +5,7 @@
     {
         protected override async ETTask Run(Scene scene, MicroDustAppStartFinished a)
         {
-            Log.Warning("Start to create login ui.");
+            //Log.Warning("Start to create login ui.");
             await UIHelper.Create(scene, UIType.MicroDustLogin, UILayer.Mid);
         }
     }

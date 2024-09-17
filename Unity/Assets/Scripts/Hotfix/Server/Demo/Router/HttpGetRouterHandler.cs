@@ -18,7 +18,7 @@ namespace ET.Server
             }
             foreach (StartSceneConfig startSceneConfig in StartSceneConfigCategory.Instance.MicroDustRouters)
             {
-                Log.Warning($"Add router: {startSceneConfig.StartProcessConfig.OuterIP}:{startSceneConfig.Port}");
+                //Log.Warning($"Add router: {startSceneConfig.StartProcessConfig.OuterIP}:{startSceneConfig.Port}");
                 response.Routers.Add($"{startSceneConfig.StartProcessConfig.OuterIP}:{startSceneConfig.Port}");
             }
             HttpHelper.Response(context, response);

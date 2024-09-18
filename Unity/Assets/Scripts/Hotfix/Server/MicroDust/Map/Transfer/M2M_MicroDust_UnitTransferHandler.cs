@@ -44,7 +44,6 @@
         {
             await MicroDustMajorCityHelper.LoadData(playerComponent);
             var majorCityComponent = playerComponent.GetComponent<MicroDustMajorCityComponent>();
-                    X = majorCityComponent.MajorCityInfo.X,
             var majorCity = M2C_MicroDust_MajorCity.Create();
             var pos = MicroDustPosition.Create();
             pos.X = majorCityComponent.MajorCityInfo.X;

@@ -8,8 +8,9 @@ namespace ET.Client
         {
             try
             {
+                var request = C2G_MicroDust_EnterMap.Create();
                 G2C_MicroDust_EnterMap g2CEnterMap = await root.GetComponent<MicroDustClientSenderComponent>().Call(
-                    new C2G_MicroDust_EnterMap()) as G2C_MicroDust_EnterMap;
+                    request) as G2C_MicroDust_EnterMap;
 
                 // 等待场景切换完成
                 await root.GetComponent<ObjectWait>().Wait<MicroDust_Wait_SceneChangeFinish>();

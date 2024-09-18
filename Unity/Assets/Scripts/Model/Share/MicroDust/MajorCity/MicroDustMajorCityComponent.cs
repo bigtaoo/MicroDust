@@ -1,6 +1,6 @@
 ﻿namespace ET
 {
-    [ComponentOf(typeof(Scene))]
+    [ComponentOf(typeof(MicroDustPlayerComponent))]
     public class MicroDustMajorCityComponent : Entity, IAwake
     {
         public string UserId;

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ET
 {
-    [ComponentOf(typeof(MicroDustUnitInfoComponent))]
+    [ComponentOf(typeof(MicroDustPlayerComponent))]
     public class MicroDustNumericComponent : Entity, IAwake, ITransfer
     {
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]

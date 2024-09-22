@@ -2,11 +2,12 @@
 
 namespace ET.Server
 {
+    [FriendOfAttribute(typeof(ET.MicroDustMajorCityComponent))]
     public static class MicroDustMajorCityHelper
     {
         public static async ETTask LoadData(MicroDustPlayerComponent player)
         {
-            var db = DBFactory.GetDBComponent(player.Root(), 1);
+            var db = player.Root().GetComponent<MicroDustDatabaseManagerComponent>().GetZoneDB(1);
             var majorCity = (await db.Query<MicroDustMajorCityComponent>(p => p.UserId == player.UserId, MicroDustCollections.MajorCity))
                 .FirstOrDefault();
             if (majorCity == null)
@@ -28,7 +29,7 @@ namespace ET.Server
             majorCity.MajorCityInfo.Y = RandomGenerator.RandomNumber(-70, 70);
             majorCity.MajorCityInfo.Level = 0;
 
-            var db = DBFactory.GetDBComponent(player.Root(), 1);
+            var db = player.Root().GetComponent<MicroDustDatabaseManagerComponent>().GetZoneDB(1);
             await db.Save(majorCity, MicroDustCollections.MajorCity);
 
             Log.Debug($"MajorCity, initialize major city: {majorCity.ToJson()}");

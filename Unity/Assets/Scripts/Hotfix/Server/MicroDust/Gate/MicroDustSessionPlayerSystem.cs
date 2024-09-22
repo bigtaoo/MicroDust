@@ -12,8 +12,9 @@
                 return;
             }
 
+            var request = G2M_MicroDust_SessionDisconnect.Create();
             root.GetComponent<MessageLocationSenderComponent>().Get(LocationType.Unit)
-                .Send(self.Player.Id, new G2M_MicroDust_SessionDisconnect());
+                .Send(self.Player.Id, request);
         }
 
         [EntitySystem]

@@ -13,7 +13,7 @@
 				gateMapComponent, player.Id, IdGenerater.Instance.GenerateInstanceId(), "GateMap");
 
 			var scene = gateMapComponent.Scene;
-			var dbComponent = DBFactory.GetDBComponent(scene, session.Zone());
+			var dbComponent = player.Root().GetComponent<MicroDustDatabaseManagerComponent>().GetZoneDB(session.Zone());
 			var unit = (await dbComponent.QueryWithComponents<MicroDustPlayerComponent>(
 				scene, u => u.PlayerId == player.PlayerId, MicroDustCollections.UserInfo));
 			if (unit == null)

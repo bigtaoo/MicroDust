@@ -1,6 +1,7 @@
 ﻿namespace ET.Server
 {
     [MessageLocationHandler(SceneType.Map)]
+    [FriendOfAttribute(typeof(ET.MicroDustArmyComponent))]
     public class C2M_MicroDust_ConfigureArmyHandler : MessageLocationHandler<MicroDustLocationComponent, C2M_MicroDust_ConfigureArmy, M2C_MicroDust_ConfigureArmy>
     {
         protected override async ETTask Run(MicroDustLocationComponent unit, C2M_MicroDust_ConfigureArmy request, M2C_MicroDust_ConfigureArmy response)

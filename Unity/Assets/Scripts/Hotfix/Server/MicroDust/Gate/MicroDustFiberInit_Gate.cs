@@ -18,6 +18,7 @@ namespace ET.Server
 
             root.AddComponent<MicroDustGateSessionKeyComponent>();
             root.AddComponent<MicroDustAllGatePlayersComponent>();
+            root.AddComponent<MicroDustDatabaseManagerComponent>();
             Log.Debug("FiberInit  Gate");
 
             StartSceneConfig startSceneConfig = StartSceneConfigCategory.Instance.Get((int)root.Id);

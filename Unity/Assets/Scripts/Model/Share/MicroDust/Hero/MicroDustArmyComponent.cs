@@ -2,6 +2,7 @@
 
 namespace ET
 {
+    [ComponentOf(typeof(MicroDustPlayerComponent))]
     public class MicroDustArmyComponent : Entity, IAwake
     {
         public string userId;

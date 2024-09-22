@@ -1,6 +1,7 @@
 ﻿using ET.Server;
 using System;
 using System.Linq;
+using System.Numerics;
 
 namespace ET.Assets.Scripts.Hotfix.Server.MicroDust.Gate
 {
@@ -47,7 +48,7 @@ namespace ET.Assets.Scripts.Hotfix.Server.MicroDust.Gate
 
         private async ETTask<string> GetPlayerId(Session session, string account)
         {
-            var dbComponent = DBFactory.GetDBComponent(session, session.Zone());
+            var dbComponent = session.Root().GetComponent<MicroDustDatabaseManagerComponent>().GetZoneDB(session.Zone());
             var accountInfo = await dbComponent.Query<MicroDustAccount>(a => a.Account == account, MicroDustCollections.Accounts);
             if (accountInfo.Any())
             {

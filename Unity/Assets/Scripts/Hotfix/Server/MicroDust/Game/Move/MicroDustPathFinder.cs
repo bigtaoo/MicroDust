@@ -6,11 +6,10 @@
         {
             var result = new ListComponent<MicroDustPosition>();
             var current = start;
-            result.Add(new MicroDustPosition
-            {
-                X = current.X,
-                Y = current.Y,
-            });
+            var p = MicroDustPosition.Create();
+            p.X = current.X;
+            p.Y = current.Y;
+            result.Add(p);
             while (current.X != end.X || current.Y != end.Y)
             {
                 if (current.X < end.X)
@@ -30,11 +29,10 @@
                     --current.Y;
                 }
                 Log.Debug($"path, add current: {current.X}, {current.Y}");
-                result.Add(new MicroDustPosition
-                {
-                    X = current.X,
-                    Y = current.Y,
-                });
+                p = MicroDustPosition.Create();
+                p.X = current.X;
+                p.Y = current.Y;
+                result.Add(p);
             }
 
             return result;

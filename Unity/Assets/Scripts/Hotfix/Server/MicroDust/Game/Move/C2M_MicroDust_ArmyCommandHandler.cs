@@ -4,6 +4,8 @@ using System.Linq;
 namespace ET.Server
 {
     [MessageLocationHandler(SceneType.Map)]
+    [FriendOfAttribute(typeof(ET.Server.MicroDustServerMoveComponent))]
+    [FriendOfAttribute(typeof(ET.MicroDustArmyComponent))]
     public class C2M_MicroDust_ArmyCommandHandler : MessageLocationHandler<MicroDustLocationComponent, C2M_MicroDust_ArmyCommand, M2C_MicroDust_ArmyCommand>
     {
         protected override async ETTask Run(MicroDustLocationComponent unit, C2M_MicroDust_ArmyCommand request, M2C_MicroDust_ArmyCommand response)
@@ -34,11 +36,10 @@ namespace ET.Server
             var army = armyComponent.Armies[request.Army];
 
             var majorCity = playerComponent.GetComponent<MicroDustMajorCityComponent>();
-            var start = new MicroDustPosition
-            {
-                X = majorCity.MajorCityInfo.X,
-                Y = majorCity.MajorCityInfo.Y,
-            };
+            var start = MicroDustPosition.Create();
+            start.X = majorCity.MajorCityInfo.X;
+            start.Y = majorCity.MajorCityInfo.Y;
+
             var path = MicroDustPathFinder.FindPath(start, request.Target);
             Log.Debug($"Path, result- {path.ToJson()}");
             moveData.Paths.Clear();

@@ -1,8 +1,9 @@
 ﻿namespace ET.Server
 {
+    [FriendOfAttribute(typeof(ET.MicroDustNumericComponent))]
     public static class MicroDustResourceHelper
     {
-        public static async ETTask UpdateResource(MicroDustPlayerComponent unit, DBComponent db)
+        public static async ETTask UpdateResource(MicroDustPlayerComponent unit, MicroDustDatabaseComponent db)
         {
             var numericComponent = unit.GetComponent<MicroDustNumericComponent>();
             if (numericComponent == null)

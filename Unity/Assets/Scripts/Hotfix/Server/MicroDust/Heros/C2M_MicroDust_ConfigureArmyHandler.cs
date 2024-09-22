@@ -19,10 +19,10 @@
             }
             var player = unit.Parent as MicroDustPlayerComponent;
             var root = player.Root();
-            var army = root.GetComponent<MicroDustArmyComponent>();
+            var army = player.GetComponent<MicroDustArmyComponent>();
             if (army == null)
             {
-                army = root.AddComponent<MicroDustArmyComponent>();
+                army = player.AddComponent<MicroDustArmyComponent>();
             }
             if (MicroDustHeroHelper.IsHeroInUse(request.HeroId, army))
             {

@@ -2,6 +2,7 @@
 
 namespace ET.Server
 {
+    [FriendOfAttribute(typeof(ET.MicroDustNumericComponent))]
     public static partial class MicroDustUnitFactory
     {
         public static MicroDustPlayerComponent Create(Scene scene, UnitType unitType)
@@ -11,7 +12,7 @@ namespace ET.Server
             {
                 case UnitType.Player:
                     {
-                        var unit = unitComponent.AddComponent<MicroDustUnitInfoComponent>();
+                        var unit = unitComponent.AddChild<MicroDustUnitInfoComponent>();
                         unit.UserName = "Tao";
                         var numericComponent = unitComponent.AddComponent<MicroDustNumericComponent>();
                         numericComponent.Set(MicroDustNumericTypes.FoodCurrent, 89898);

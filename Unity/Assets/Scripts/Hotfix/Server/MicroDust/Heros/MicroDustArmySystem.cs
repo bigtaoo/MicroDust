@@ -1,6 +1,7 @@
 ﻿namespace ET.Server
 {
     [EntitySystemOf(typeof(MicroDustArmyComponent))]
+    [FriendOfAttribute(typeof(ET.MicroDustArmyComponent))]
     public static partial class MicroDustArmySystem
     {
         [EntitySystem]

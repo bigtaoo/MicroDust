@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Numerics;
 
 namespace ET.Server
 {
@@ -29,7 +30,7 @@ namespace ET.Server
 
         private async ETTask<bool> IsLoginValid(Session session, C2R_MicroDust_Login request)
         {
-            var dbComponent = DBFactory.GetDBComponent(session, session.Zone());
+            var dbComponent = session.Root().GetComponent<MicroDustDatabaseManagerComponent>().GetZoneDB(session.Zone());
             var accountInfo = (await dbComponent.Query<MicroDustAccount>(
                 a => a.Account == request.Account,
                 MicroDustCollections.Accounts)).FirstOrDefault();

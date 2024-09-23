@@ -15,7 +15,7 @@ namespace ET.Server
 
         private static async ETTask SaveHero(Session session, string playerId, int heroId)
         {
-            var db = DBFactory.GetDBComponent(session, session.Zone());
+            var db = session.Root().GetComponent<MicroDustDatabaseManagerComponent>().GetZoneDB(session.Zone());
             var heros = (await db.Query<MicroDustHeroComponent>(h => h.PlayerId == playerId,
                 MicroDustCollections.Heros)).FirstOrDefault();
             if (heros == null)

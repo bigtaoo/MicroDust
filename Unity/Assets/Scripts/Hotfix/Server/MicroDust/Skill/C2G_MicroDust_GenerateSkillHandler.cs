@@ -14,12 +14,13 @@
                 response.Error = 30001;
                 return;
             }
-            var generatedSkill = new MicroDustSkillInfo
-            {
-                SkillConfigId = skill.ConfigId,
-                SkillId = skill.SkillId,
-                UsedByHeroId = skill.UsedByHeroId,
-            };
+
+            var generatedSkill = MicroDustSkillInfo.Create();
+
+            generatedSkill.SkillConfigId = skill.ConfigId;
+            generatedSkill.SkillId = skill.SkillId;
+            generatedSkill.UsedByHeroId = skill.UsedByHeroId;
+            
             response.GeneratedSkill = generatedSkill;
             response.HeroId = request.HeroId;
         }

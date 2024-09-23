@@ -7,7 +7,7 @@ namespace ET.Server
     {
         public static async ETTask<MicroDustSkill> GenerateSkill(Session session, string playerId, string heroId)
         {
-            var db = DBFactory.GetDBComponent(session, session.Zone());
+            var db = session.Root().GetComponent<MicroDustDatabaseManagerComponent>().GetZoneDB(session.Zone());
             var heros = (await db.Query<MicroDustHeroComponent>(h => h.PlayerId == playerId,
                 MicroDustCollections.Heros)).FirstOrDefault();
             var hero = heros.Heros.FirstOrDefault(h => h.Id == heroId);

@@ -2,11 +2,12 @@
 
 namespace ET.Server
 {
+    [FriendOfAttribute(typeof(ET.MicroDustTileInfo))]
     public static class MicroDustMonsterHelper
     {
         public static async ETTask<int> GetMonsterConfigIdByTile(Session session, int tilePosX, int tilePosY)
         {
-            var db = DBFactory.GetDBComponent(session, session.Zone());
+            var db = session.Root().GetComponent<MicroDustDatabaseManagerComponent>().GetZoneDB(session.Zone());
             var monster = (await db.Query<MicroDustServerMonsterComponent>(
                 m => m.TilePositionX == tilePosX && m.TilePositionY == tilePosY,
                 MicroDustCollections.Monsters)).FirstOrDefault();

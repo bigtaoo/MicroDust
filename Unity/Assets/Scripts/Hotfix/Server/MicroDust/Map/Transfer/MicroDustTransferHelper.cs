@@ -14,7 +14,7 @@
             var root = unit.Root();
             var localtion = unit.GetComponent<MicroDustLocationComponent>();
             var localtionId = localtion.Id;
-            //Log.Debug($"Net, transfer unit id:{localtionId}");
+            Log.Warning($"Net, transfer unit id:{localtionId}");
 
             var request = M2M_MicroDust_UnitTransferRequest.Create();
             request.OldActorId = localtion.GetActorId();

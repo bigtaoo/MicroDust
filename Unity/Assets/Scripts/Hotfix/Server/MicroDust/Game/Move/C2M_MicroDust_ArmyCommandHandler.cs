@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace ET.Server
 {
-    [MessageLocationHandler(SceneType.Map)]
+    [MessageLocationHandler(SceneType.MicroDustMap)]
     [FriendOfAttribute(typeof(ET.Server.MicroDustServerMoveComponent))]
     [FriendOfAttribute(typeof(ET.MicroDustArmyComponent))]
     public class C2M_MicroDust_ArmyCommandHandler : MessageLocationHandler<MicroDustLocationComponent, C2M_MicroDust_ArmyCommand, M2C_MicroDust_ArmyCommand>

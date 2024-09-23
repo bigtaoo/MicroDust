@@ -1,6 +1,6 @@
 ﻿namespace ET.Server
 {
-    [MessageLocationHandler(SceneType.Map)]
+    [MessageLocationHandler(SceneType.MicroDustMap)]
     [FriendOfAttribute(typeof(ET.MicroDustArmyComponent))]
     public class C2M_MicroDust_ConfigureArmyHandler : MessageLocationHandler<MicroDustLocationComponent, C2M_MicroDust_ConfigureArmy, M2C_MicroDust_ConfigureArmy>
     {

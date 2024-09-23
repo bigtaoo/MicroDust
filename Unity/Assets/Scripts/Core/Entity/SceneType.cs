@@ -32,6 +32,7 @@ namespace ET
 		MicroDust = 1 << 23,
 		MicroDustNetClient = 1 << 24,
 		MicroDustCurrent = 1 << 25,
+		MicroDustMap = 1 << 26,
 
 		// 客户端
 		Demo = 1 << 30,

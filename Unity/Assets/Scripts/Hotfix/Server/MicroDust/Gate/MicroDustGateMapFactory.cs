@@ -5,7 +5,7 @@
         public static async ETTask<Scene> Create(Entity parent, long id, long instanceId, string name)
         {
             await ETTask.CompletedTask;
-            var scene = EntitySceneFactory.CreateScene(parent, id, instanceId, SceneType.Map, name);
+            var scene = EntitySceneFactory.CreateScene(parent, id, instanceId, SceneType.MicroDustMap, name);
 
             scene.AddComponent<MicroDustPlayerComponent>();
             //scene.AddComponent<AOIManagerComponent>();

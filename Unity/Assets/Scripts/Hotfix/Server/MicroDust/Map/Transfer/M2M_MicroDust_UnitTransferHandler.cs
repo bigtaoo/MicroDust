@@ -1,12 +1,12 @@
 ﻿namespace ET.Server
 {
-    [MessageHandler(SceneType.Map)]
+    [MessageHandler(SceneType.MicroDustMap)]
     [FriendOfAttribute(typeof(ET.MicroDustNumericComponent))]
     public class M2M_MicroDust_UnitTransferHandler : MessageHandler<Scene, M2M_MicroDust_UnitTransferRequest, M2M_MicroDust_UnitTransferResponse>
     {
         protected override async ETTask Run(Scene scene, M2M_MicroDust_UnitTransferRequest request, M2M_MicroDust_UnitTransferResponse response)
         {
-            //Log.Warning("M2M_MicroDust_UnitTransferHandler");
+            Log.Warning("M2M_MicroDust_UnitTransferHandler");
             scene.RemoveComponent<MicroDustPlayerComponent>();
             var playerComponent = scene.AddComponent(MongoHelper.Deserialize<MicroDustPlayerComponent>(request.Unit)) as MicroDustPlayerComponent;
 

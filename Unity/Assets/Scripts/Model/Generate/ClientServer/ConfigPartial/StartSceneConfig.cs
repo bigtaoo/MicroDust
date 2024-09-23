@@ -66,6 +66,7 @@ namespace ET
                         this.MicroDustRouters.Add(startSceneConfig);
                         break;
                     case SceneType.Map:
+                    case SceneType.MicroDustMap:
                         this.Maps.Add(startSceneConfig);
                         break;
                     case SceneType.Match:

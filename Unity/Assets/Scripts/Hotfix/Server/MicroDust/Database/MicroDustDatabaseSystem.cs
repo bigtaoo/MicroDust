@@ -6,9 +6,17 @@ using System.Linq.Expressions;
 
 namespace ET.Server
 {
+    [EntitySystemOf(typeof(MicroDustDatabaseComponent))]
     [FriendOf(typeof(MicroDustDatabaseComponent))]
     public static partial class MicroDustDatabaseSystem
     {
+        [EntitySystem]
+        private static void Awake(this MicroDustDatabaseComponent self, string dbConnection, string dbName)
+        {
+            self.mongoClient = new MongoClient(dbConnection);
+            self.database = self.mongoClient.GetDatabase(dbName);
+        }
+
         public static async ETTask SaveWithComponents<T>(this MicroDustDatabaseComponent self, T entity, string collection) where T : Entity
         {
             Fiber fiber = self.Fiber();
@@ -37,7 +45,7 @@ namespace ET.Server
             }
         }
 
-        public static async ETTask<T> QueryWithComponents<T>(this MicroDustDatabaseComponent self, Entity entity, Expression<Func<MicroDustDBObject, bool>> filter, string collection) where T : Entity
+        public static async ETTask<T> QueryWithComponents<T>(this MicroDustDatabaseComponent self, Scene scene, Expression<Func<MicroDustDBObject, bool>> filter, string collection) where T : Entity
         {
             List<MicroDustDBObject> result;
             using (await self.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.DB, RandomGenerator.RandInt64() % DBComponent.TaskCount))
@@ -53,8 +61,8 @@ namespace ET.Server
             }
 
             var r = obj.Self as T;
-            entity.RemoveComponent(r.GetType());
-            //entity.AddComponent(r);
+            scene.RemoveComponent(r.GetType());
+            scene.AddComponent(r);
             foreach (var c in obj.Entities)
             {
                 Log.Debug($"Database, add component: {c.ToJson()}");

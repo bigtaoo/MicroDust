@@ -31,6 +31,7 @@ namespace ET.Server
         private async ETTask<bool> IsLoginValid(Session session, C2R_MicroDust_Login request)
         {
             var dbComponent = session.Root().GetComponent<MicroDustDatabaseManagerComponent>().GetZoneDB(session.Zone());
+            Log.Warning($"DB component: {dbComponent == null}");
             var accountInfo = (await dbComponent.Query<MicroDustAccount>(
                 a => a.Account == request.Account,
                 MicroDustCollections.Accounts)).FirstOrDefault();

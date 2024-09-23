@@ -19,6 +19,8 @@ namespace ET.Server
             root.AddComponent<LocationProxyComponent>();
             root.AddComponent<MessageLocationSenderComponent>();
 
+            Log.Warning("Fiber init map server");
+
             await ETTask.CompletedTask;
         }
     }

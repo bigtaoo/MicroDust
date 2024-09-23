@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net;
 
 namespace ET.Server
 {
@@ -14,6 +11,7 @@ namespace ET.Server
             // 如果发向同一个进程，则扔到消息队列中
             if (actorId.Process == fiber.Process)
             {
+                //Log.Warning("Message sender to the same process");
                 fiber.Root.GetComponent<ProcessInnerSender>().Send(actorId, message);
                 return;
             }
@@ -23,6 +21,8 @@ namespace ET.Server
             a2NetInnerMessage.FromAddress = fiber.Address;
             a2NetInnerMessage.ActorId = actorId;
             a2NetInnerMessage.MessageObject = message;
+
+            //Log.Warning($"MessageSender to different process, A2NetInner_Message: {a2NetInnerMessage.ToJson()}");
 
             MessageQueue.Instance.Send(new ActorId(fiber.Process, ConstFiberId.NetInner), a2NetInnerMessage);
         }

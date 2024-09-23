@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 
 namespace ET.Server
 {
@@ -15,6 +16,7 @@ namespace ET.Server
             Session session = args.Session;
             object message = args.Message;
             Scene root = args.Session.Root();
+            Log.Warning($"Microdust gate on read message: {message.ToJson()}");
             // 根据消息接口判断是不是Actor消息，不同的接口做不同的处理,比如需要转发给Chat Scene，可以做一个IChatMessage接口
             switch (message)
             {

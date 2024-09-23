@@ -98,6 +98,7 @@ namespace ET.Server
         
         private static async ETTask SendInner(this MessageLocationSenderOneType self, long entityId, IMessage message)
         {
+            //Log.Warning("Send Inner");
             MessageLocationSender messageLocationSender = self.GetOrCreate(entityId);
 
             Scene root = self.Root();
@@ -121,6 +122,7 @@ namespace ET.Server
                 }
                 
                 messageLocationSender.LastSendOrRecvTime = TimeInfo.Instance.ServerNow();
+                //Log.Warning($"Send inner, message sender component is null: {root.GetComponent<MessageSender>() == null}");
                 root.GetComponent<MessageSender>().Send(messageLocationSender.ActorId, message);
             }
         }

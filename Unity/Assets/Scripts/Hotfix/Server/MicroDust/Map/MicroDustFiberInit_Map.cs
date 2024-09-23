@@ -20,7 +20,7 @@ namespace ET.Server
             root.AddComponent<MessageLocationSenderComponent>();
             root.AddComponent<MicroDustDatabaseManagerComponent>();
 
-            Log.Warning("Init microdust map server");
+            //Log.Warning("Fiber init microdust map server");
 
             await ETTask.CompletedTask;
         }

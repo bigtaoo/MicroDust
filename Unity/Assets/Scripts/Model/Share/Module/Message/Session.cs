@@ -152,6 +152,7 @@ namespace ET
             self.LastSendTime = TimeInfo.Instance.ClientNow();
             LogMsg.Instance.Debug(self.Fiber(), message);
 
+            //Log.Warning($"Aservice type is: {self.AService.GetType()}");
             (ushort opcode, MemoryBuffer memoryBuffer) = MessageSerializeHelper.ToMemoryBuffer(self.AService, actorId, message);
             self.AService.Send(self.Id, memoryBuffer);
         }

@@ -24,7 +24,7 @@ namespace ET.Server
 
         public static void SendArmyInfoToClient(MicroDustPlayerComponent player)
         {
-            M2C_MicroDustArmies armies = new();
+            var armies = M2C_MicroDustArmies.Create();
             var armyComponent = player.GetComponent<MicroDustArmyComponent>();
             foreach (var army in armyComponent.Armies)
             {
@@ -36,6 +36,8 @@ namespace ET.Server
                 armies.Arimes.Add(a);
             }
             MicroDustMapMessageHelper.SendToClient(player, armies);
+
+            //Log.Warning($"send army info: {armies.ToJson()}");
         }
     }
 }

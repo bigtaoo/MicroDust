@@ -7,7 +7,7 @@ namespace ET.Server
     {
         public static async ETTask LoadData(MicroDustPlayerComponent player)
         {
-            Log.Warning($"root: {player.Root().SceneType.ToString()}, dbmanage:{player.Root().GetComponent<MicroDustDatabaseManagerComponent>() == null}");
+            //Log.Warning($"root: {player.Root().SceneType.ToString()}, dbmanage:{player.Root().GetComponent<MicroDustDatabaseManagerComponent>() == null}");
             var db = player.Root().GetComponent<MicroDustDatabaseManagerComponent>().GetZoneDB(1);
             var majorCity = (await db.Query<MicroDustMajorCityComponent>(p => p.UserId == player.UserId, MicroDustCollections.MajorCity))
                 .FirstOrDefault();

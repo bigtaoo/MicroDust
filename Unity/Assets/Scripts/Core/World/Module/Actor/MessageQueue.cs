@@ -33,6 +33,7 @@ namespace ET
             {
                 return false;
             }
+            //Log.Warning("Enqueue the same process message");
             queue.Enqueue(new MessageInfo() {ActorId = new ActorId(fromAddress, actorId.InstanceId), MessageObject = messageObject});
             return true;
         }

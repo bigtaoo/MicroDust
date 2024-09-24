@@ -34,13 +34,12 @@
 
             Log.Debug($"Send login with account[{account}] password[{password}]");
 
+            var request = Main2NetClient_MicroDust_Login.Create();
+            request.OwnerFiberId = self.fiberId;
+            request.Account = account;
+            request.Password = password;
             var response = await self.Root().GetComponent<ProcessInnerSender>().Call(
-                self.netClientActorId, new Main2NetClient_MicroDust_Login()
-            {
-                OwnerFiberId = self.Fiber().Id,
-                Account = account,
-                Password = password
-            }) as NetClient2Main_MicroDust_Login;
+                self.netClientActorId, request) as NetClient2Main_MicroDust_Login;
             return (response.PlayerId, response.UserId);
         }
 

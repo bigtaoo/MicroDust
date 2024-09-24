@@ -2,6 +2,7 @@
 
 namespace ET.Client
 {
+    [FriendOfAttribute(typeof(ET.MicroDustTileInfo))]
     public static class MicroDustInitializeMap
     {
         public static async ETTask SendMapTiles(Scene root, ListComponent<MicroDustTileInfo> tiles)
@@ -9,15 +10,15 @@ namespace ET.Client
             try
             {
                 // Log.Debug($"tile: send request {tiles.ToJson()}");
-                var request = new C2G_MicroDustInitializeMap_Request();
+                var request = C2G_MicroDustInitializeMap_Request.Create();
                 foreach (var tile in tiles)
                 {
-                    var t = new MicroDustMapTile
-                    {
-                        PosX = tile.PosX,
-                        PosY = tile.PosY,
-                        TileType = tile.TileType,
-                    };
+                    var t = MicroDustMapTile.Create();
+
+                    t.PosX = tile.PosX;
+                    t.PosY = tile.PosY;
+                    t.TileType = tile.TileType;
+
                     request.MapTiles.Add(t);
                 }
 

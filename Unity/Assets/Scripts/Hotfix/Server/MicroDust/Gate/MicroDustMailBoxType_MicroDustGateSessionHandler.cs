@@ -1,7 +1,7 @@
 ﻿namespace ET.Server
 {
     [Invoke((long)MailBoxType.MicroDustGateSession)]
-    public class MicroDustMailBoxType_GateSessionHandler : AInvokeHandler<MailBoxInvoker>
+    public class MicroDustMailBoxType_MicroDustGateSessionHandler : AInvokeHandler<MailBoxInvoker>
     {
         public override void Handle(MailBoxInvoker args)
         {

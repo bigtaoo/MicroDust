@@ -15,16 +15,19 @@ namespace ET.Client
             {
                 case IResponse response:
                     {
+                        //Log.Warning("MicroDust client net on read respone");
                         session.OnResponse(response);
                         break;
                     }
                 case ISessionMessage:
                     {
+                        //Log.Warning("MicroDust client net on read session message");
                         MessageSessionDispatcher.Instance.Handle(session, message);
                         break;
                     }
                 case IMessage iActorMessage:
                     {
+                        Log.Warning("MicroDust client net on read actor message");
                         // 扔到Main纤程队列中
                         int parentFiberId = fiber.Root.GetComponent<FiberParentComponent>().ParentFiberId;
                         fiber.Root.GetComponent<ProcessInnerSender>().Send(new ActorId(fiber.Process, parentFiberId), iActorMessage);

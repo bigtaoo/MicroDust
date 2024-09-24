@@ -55,7 +55,7 @@ namespace ET
                 }
                 return;
             }
-            Log.Warning($"Add message to the mail box: {message.ToJson()}");
+            //Log.Warning($"Add message to the mail box: {message.ToJson()}");
             mailBoxComponent.Add(actorId.Address, message);
         }
 

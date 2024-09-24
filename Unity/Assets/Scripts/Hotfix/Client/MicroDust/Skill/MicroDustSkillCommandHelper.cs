@@ -9,10 +9,9 @@ namespace ET.Client
         {
             try
             {
-                var request = new C2G_MicroDustGenerateSkill_Request
-                {
-                    HeroId = heroId,
-                };
+                var request = C2G_MicroDustGenerateSkill_Request.Create();
+                request.HeroId = heroId;
+                
                 var response = await root.GetComponent<MicroDustClientSenderComponent>().Call(
                         request, false) as G2C_MicroDustGenerateSkill_Response;
                 if (response.Error != 0)
@@ -47,7 +46,7 @@ namespace ET.Client
             try
             {
                 var result = await root.GetComponent<MicroDustClientSenderComponent>().Call(
-                    new C2G_MicroDustSkills_Request()) as G2C_MicroDustSkills_Response;
+                    C2G_MicroDustSkills_Request.Create()) as G2C_MicroDustSkills_Response;
 
                 root.RemoveComponent<MicroDustSkillComponent>();
                 var skills = root.AddComponent<MicroDustSkillComponent>();

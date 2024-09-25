@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 
 namespace ET.Client
 {
@@ -27,7 +28,7 @@ namespace ET.Client
                     }
                 case IMessage iActorMessage:
                     {
-                        Log.Warning("MicroDust client net on read actor message");
+                        //Log.Warning($"MicroDust client net on read actor message {message.ToJson()}");
                         // 扔到Main纤程队列中
                         int parentFiberId = fiber.Root.GetComponent<FiberParentComponent>().ParentFiberId;
                         fiber.Root.GetComponent<ProcessInnerSender>().Send(new ActorId(fiber.Process, parentFiberId), iActorMessage);

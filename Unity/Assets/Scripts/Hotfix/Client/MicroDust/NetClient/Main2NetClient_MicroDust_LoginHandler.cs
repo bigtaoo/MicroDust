@@ -12,14 +12,11 @@ namespace ET.Client
             string password = request.Password;
 
             root.RemoveComponent<MicroDustRouterAddressComponent>();
-            var routerAddressComponent = root.GetComponent<MicroDustRouterAddressComponent>();
-            if (routerAddressComponent == null)
-            {
-                routerAddressComponent =
-                        root.AddComponent<MicroDustRouterAddressComponent, string, int>(ConstValue.RouterHttpHost, ConstValue.RouterHttpPort);
-                await routerAddressComponent.Init();
-                root.AddComponent<NetComponent, AddressFamily, NetworkProtocol>(routerAddressComponent.RouterManagerIPAddress.AddressFamily, NetworkProtocol.UDP);
-            }
+            var routerAddressComponent = root.AddComponent<MicroDustRouterAddressComponent, string, int>(ConstValue.RouterHttpHost, ConstValue.RouterHttpPort);
+            await routerAddressComponent.Init();
+            root.AddComponent<NetComponent, AddressFamily, NetworkProtocol>(routerAddressComponent.RouterManagerIPAddress.AddressFamily, NetworkProtocol.UDP);
+            root.GetComponent<FiberParentComponent>().ParentFiberId = request.OwnerFiberId;
+
             IPEndPoint realmAddress = routerAddressComponent.GetRealmAddress(account);
             NetComponent netComponent = root.GetComponent<NetComponent>();
 

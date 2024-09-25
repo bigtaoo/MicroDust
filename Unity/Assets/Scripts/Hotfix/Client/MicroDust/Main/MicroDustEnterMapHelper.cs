@@ -12,6 +12,7 @@ namespace ET.Client
                 G2C_MicroDust_EnterMap g2CEnterMap = await root.GetComponent<MicroDustClientSenderComponent>().Call(
                     request) as G2C_MicroDust_EnterMap;
 
+                Log.Warning($"Enter map response: {g2CEnterMap.ToJson()}");
                 // 等待场景切换完成
                 await root.GetComponent<ObjectWait>().Wait<MicroDust_Wait_SceneChangeFinish>();
 

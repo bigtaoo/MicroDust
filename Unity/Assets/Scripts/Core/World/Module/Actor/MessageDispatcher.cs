@@ -98,6 +98,7 @@ namespace ET
             {
                 if (!actorMessageDispatcherInfo.SceneType.HasSameFlag(sceneType))
                 {
+                    Log.Warning($"Message dispach failed. current scene type: {actorMessageDispatcherInfo.SceneType}, expect type: {sceneType}");
                     continue;
                 }
                 await actorMessageDispatcherInfo.IMHandler.Handle(entity, fromAddress, message);   

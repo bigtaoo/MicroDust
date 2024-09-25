@@ -35,7 +35,7 @@
             Log.Debug($"Send login with account[{account}] password[{password}]");
 
             var request = Main2NetClient_MicroDust_Login.Create();
-            request.OwnerFiberId = self.fiberId;
+            request.OwnerFiberId = self.Fiber().Id;
             request.Account = account;
             request.Password = password;
             var response = await self.Root().GetComponent<ProcessInnerSender>().Call(

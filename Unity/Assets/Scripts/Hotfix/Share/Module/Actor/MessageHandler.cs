@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 
 namespace ET
 {
@@ -20,6 +21,7 @@ namespace ET
                 return;
             }
 
+            Log.Warning($"Message handler: entity: {e.GetType()} message: {msg.ToJson()}");
             await this.Run(e, msg);
         }
 

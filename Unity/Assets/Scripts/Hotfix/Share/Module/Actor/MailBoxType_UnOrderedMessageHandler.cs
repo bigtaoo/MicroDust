@@ -14,7 +14,7 @@
             
             MessageObject messageObject = args.MessageObject;
 
-            Log.Warning($"Handle Unordered message: entity: {mailBoxComponent.Parent.IScene.SceneType}, message: {messageObject.ToJson()}");
+            //Log.Warning($"Handle Unordered message: entity: {mailBoxComponent.Parent.IScene.SceneType}, message: {messageObject.ToJson()}");
             
             await MessageDispatcher.Instance.Handle(mailBoxComponent.Parent, args.FromAddress, messageObject);
         }

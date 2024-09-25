@@ -169,10 +169,10 @@ namespace ET
                 throw new Exception($"Invoke error3, not AInvokeHandler: {type} {typeof(A).FullName}");
             }
 
-            if (args is MailBoxInvoker mailbox)
-            {
-                Log.Warning($"invoke handler: {aInvokeHandler.GetType()}, args: {mailbox.MessageObject.ToJson()}");
-            }
+            //if (args is MailBoxInvoker mailbox)
+            //{
+            //    Log.Warning($"invoke handler: {aInvokeHandler.GetType()}, args: {mailbox.MessageObject.ToJson()}");
+            //}
             aInvokeHandler.Handle(args);
         }
         

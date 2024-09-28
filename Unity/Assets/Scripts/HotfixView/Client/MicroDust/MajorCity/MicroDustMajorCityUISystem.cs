@@ -7,6 +7,8 @@ namespace ET.Client
     [EntitySystemOf(typeof(MicroDustMajorCityUIComponent))]
     [FriendOf(typeof(MicroDustMajorCityUIComponent))]
     [FriendOfAttribute(typeof(MicroDustMajorCityUIComponent))]
+    [FriendOfAttribute(typeof(ET.MicroDustArmy))]
+    [FriendOfAttribute(typeof(ET.Client.MicroDustConfigureArmyComponent))]
     public static partial class MicroDustMajorCityUISystem
     {
         [EntitySystem]
@@ -34,13 +36,13 @@ namespace ET.Client
             self.BuildBuildings.GetComponent<Button>().onClick.AddListener(() => { self.OnBuildBuildingsClick().Coroutine(); });
         }
 
-        private static void DisplayArmyInfo(this  MicroDustMajorCityUIComponent self)
+        private static void DisplayArmyInfo(this MicroDustMajorCityUIComponent self)
         {
-            var army = self.Root().GetComponent<MicroDustArmyComponent>();
+            var army = self.Root().CurrentScene().GetComponent<MicroDustPlayerComponent>().GetComponent<MicroDustArmyComponent>();
             var heros = self.Root().GetComponent<MicroDustHeroComponent>();
-            for(int i = 0; i < self.Armies.Count; i++)
+            for (int i = 0; i < self.Armies.Count; i++)
             {
-                var firstHeroId = army.Armies[i].HeroIds[0];
+                var firstHeroId = army.GetArmyByIndex(i).HeroIds[0];
                 if (!string.IsNullOrEmpty(firstHeroId))
                 {
                     self.Armies[i].GetComponentInChildren<TMP_Text>().text =

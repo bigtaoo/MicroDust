@@ -2,7 +2,7 @@
 
 namespace ET
 {
-    public class MicroDustArmy
+    public class MicroDustArmy : Entity
     {
         public ListComponent<string> HeroIds = new();
         [BsonIgnore]

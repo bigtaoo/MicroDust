@@ -21,7 +21,7 @@ namespace ET
                 return;
             }
 
-            Log.Warning($"Message handler: entity: {e.GetType()} message: {msg.ToJson()}");
+            //Log.Warning($"Message handler: entity: {e.GetType()} message: {msg.ToJson()}");
             await this.Run(e, msg);
         }
 

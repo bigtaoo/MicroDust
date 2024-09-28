@@ -14,15 +14,6 @@ namespace ET.Client
             UI ui = uiComponent.AddChild<UI, string, GameObject>(UIType.MicroDustMajorCity, gameObject);
             ui.AddComponent<MicroDustMajorCityUIComponent>();
 
-            //var uiType = UIType.MicroDustMajorCity;
-            //var resourcesComponent = uiComponent.Root().GetComponent<ResourcesComponent>();
-            //await resourcesComponent.Scene().GetComponent<ResourcesLoaderComponent>().LoadAsync(resourcesComponent.StringToAB(uiType));
-
-            //var bundleGameObject = (GameObject)resourcesComponent.GetAsset(resourcesComponent.StringToAB(uiType), uiType);
-            //var uiLayerGameObject = UnityEngine.Object.Instantiate(bundleGameObject, uiComponent.UIGlobalComponent.GetLayer((int)uiLayer));
-            //var ui = uiComponent.AddChild<UI, string, GameObject>(uiType, uiLayerGameObject);
-            //ui.AddComponent<MicroDustMajorCityUIComponent>();
-
             return ui;
         }
 

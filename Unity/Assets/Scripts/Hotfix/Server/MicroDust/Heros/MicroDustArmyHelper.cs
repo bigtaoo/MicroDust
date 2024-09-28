@@ -3,6 +3,7 @@
 namespace ET.Server
 {
     [FriendOfAttribute(typeof(ET.MicroDustArmyComponent))]
+    [FriendOfAttribute(typeof(ET.MicroDustArmy))]
     public static class MicroDustArmyHelper
     {
         public static async ETTask SaveData(MicroDustPlayerComponent player)
@@ -26,8 +27,9 @@ namespace ET.Server
         {
             var armies = M2C_MicroDustArmies.Create();
             var armyComponent = player.GetComponent<MicroDustArmyComponent>();
-            foreach (var army in armyComponent.Armies)
+            for (var i = 0; i < armyComponent.Armies.Count; ++i)
             {
+                var army = armyComponent.GetArmyByIndex(i);
                 var a = MicroDustArmyMessage.Create();
                 foreach (var hero in army.HeroIds)
                 {

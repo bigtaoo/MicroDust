@@ -7,6 +7,7 @@ namespace ET.Client
     [EntitySystemOf(typeof(MicroDustSelectHeroUIComponent))]
     [FriendOf(typeof(MicroDustSelectHeroUIComponent))]
     [FriendOfAttribute(typeof(MicroDustSelectHeroUIComponent))]
+    [FriendOfAttribute(typeof(ET.Client.MicroDustConfigureArmyComponent))]
     public static partial class MicroDustSelectHeroUISystem
     {
         [EntitySystem]
@@ -42,11 +43,11 @@ namespace ET.Client
             await UIHelper.Remove(self.Root(), UIType.MicroDustSelectHero);
         }
 
-        private static void DrawLeftHeros(this  MicroDustSelectHeroUIComponent self)
+        private static void DrawLeftHeros(this MicroDustSelectHeroUIComponent self)
         {
             var heros = self.Root().GetComponent<MicroDustHeroComponent>();
             var index = 0;
-            foreach(var hero in heros.Heros)
+            foreach (var hero in heros.Heros)
             {
                 var b = UnityEngine.Object.Instantiate(self.HeroLeft);
                 b.transform.SetParent(self.ContentLeft.transform, false);
@@ -109,7 +110,8 @@ namespace ET.Client
                 hero.transform.Find(MicroDustSelectHeroUIComponent.ChooseButton).gameObject.SetActive(false);
             }
             var heroId = panel.transform.Find("heroid").GetComponent<TMP_Text>().text;
-            if (!MicroDustHeroHelper.IsHeroInUse(heroId, self.Root().GetComponent<MicroDustArmyComponent>()))
+            var armyComponent = self.Root().CurrentScene().GetComponent<MicroDustPlayerComponent>().GetComponent<MicroDustArmyComponent>();
+            if (!armyComponent.IsHeroInUse(heroId))
             {
                 panel.transform.Find(MicroDustSelectHeroUIComponent.ChooseButton).gameObject.SetActive(true);
             }

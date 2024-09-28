@@ -49,12 +49,16 @@ namespace ET.Server
                     }
                 case ILocationRequest actorLocationRequest: // gate session收到actor rpc消息，先向actor 发送rpc请求，再将请求结果返回客户端
                     {
-                        long unitId = session.GetComponent<SessionPlayerComponent>().Player.Id;
-                        int rpcId = actorLocationRequest.RpcId; // 这里要保存客户端的rpcId
+                        long unitId = session.GetComponent<MicroDustSessionPlayerComponent>().Player.Id;
+                        //Log.Debug($"Actor: unit id: {unitId}");
+                        int rpcId = actorLocationRequest.RpcId;
                         long instanceId = session.InstanceId;
-                        IResponse iResponse = await root.GetComponent<MessageLocationSenderComponent>().Get(LocationType.Unit).Call(unitId, actorLocationRequest);
+                        var a = root.GetComponent<MessageLocationSenderComponent>();
+                        var y = a.Get(LocationType.Player);
+                        //Log.Debug($"Actor: player: {y.ToJson()}, child: {y.ChildrenCount()}");
+                        IResponse iResponse = await y.Call(unitId, actorLocationRequest);
+                        //IResponse iResponse = await root.GetComponent<MessageLocationSenderComponent>().Get(LocationType.GateSession).Call(unitId, actorLocationRequest);
                         iResponse.RpcId = rpcId;
-                        // session可能已经断开了，所以这里需要判断
                         if (session.InstanceId == instanceId)
                         {
                             session.Send(iResponse);

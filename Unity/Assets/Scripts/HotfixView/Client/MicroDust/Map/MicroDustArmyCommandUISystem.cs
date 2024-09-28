@@ -7,6 +7,8 @@ namespace ET.Client
     [EntitySystemOf(typeof(MicroDustArmyCommandUIComponent))]
     [FriendOf(typeof(MicroDustArmyCommandUIComponent))]
     [FriendOfAttribute(typeof(MicroDustArmyCommandUIComponent))]
+    [FriendOfAttribute(typeof(ET.Client.MicroDustSelectedMapTileComponent))]
+    [FriendOfAttribute(typeof(ET.MicroDustArmyComponent))]
     public static partial class MicroDustArmyCommandUISystem
     {
         [EntitySystem]
@@ -86,14 +88,14 @@ namespace ET.Client
             var army = self.Root().GetComponent<MicroDustArmyComponent>();
             var heroComponent = self.Root().GetComponent<MicroDustHeroComponent>();
             //Log.Debug($"Hero, {heroComponent == null}");
-            for  (int i = 0; i < 5; ++i)
+            for (int i = 0; i < 5; ++i)
             {
                 var a = army.Armies[i];
                 if (a.HeroIds.FirstOrDefault() == null)
                 {
                     continue;
                 }
-                
+
                 var config1 = heroComponent.GetHeroConfigById(a.HeroIds[0]);
                 self.Names[i].GetComponent<TMPro.TextMeshProUGUI>().text = config1.Name;
                 var hero1 = heroComponent.GetHeroById(a.HeroIds[0]);

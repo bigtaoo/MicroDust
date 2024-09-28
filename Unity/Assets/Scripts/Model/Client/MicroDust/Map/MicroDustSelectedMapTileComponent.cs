@@ -1,5 +1,6 @@
 ﻿namespace ET.Client
 {
+    [ComponentOf(typeof(Scene))]
     public class MicroDustSelectedMapTileComponent : Entity, IAwake
     {
         public string TileType;

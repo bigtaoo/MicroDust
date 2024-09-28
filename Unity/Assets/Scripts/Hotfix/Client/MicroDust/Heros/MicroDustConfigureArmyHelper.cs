@@ -8,12 +8,11 @@ namespace ET.Client
         {
             try
             {
-                var request = new C2M_MicroDust_ConfigureArmy
-                {
-                    Army = army,
-                    HeroId = heroId,
-                    Position = position,
-                };
+                var request = C2M_MicroDust_ConfigureArmy.Create();
+                request.Army = army;
+                request.HeroId = heroId;
+                request.Position = position;
+                
                 var result = await root.GetComponent<MicroDustClientSenderComponent>().Call(
                     request) as M2C_MicroDust_ConfigureArmy;
             }

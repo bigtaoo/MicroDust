@@ -6,6 +6,7 @@ namespace ET.Client
     [EntitySystemOf(typeof(MicroDustArmyConfirmUIComponent))]
     [FriendOf(typeof(MicroDustArmyConfirmUIComponent))]
     [FriendOfAttribute(typeof(MicroDustArmyConfirmUIComponent))]
+    [FriendOfAttribute(typeof(ET.Client.MicroDustSelectedMapTileComponent))]
     public static partial class MicroDustArmyConfirmUISystem
     {
         [EntitySystem]
@@ -29,7 +30,7 @@ namespace ET.Client
             self.Resource = rc.Get<GameObject>("resource");
             self.Command = rc.Get<GameObject>("command");
 
-            for(int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 var hero = rc.Get<GameObject>($"hero{i + 1}");
             }

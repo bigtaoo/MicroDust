@@ -7,6 +7,8 @@ namespace ET.Client
     [EntitySystemOf(typeof(MicroDustConfigureArmyUIComponent))]
     [FriendOf(typeof(MicroDustConfigureArmyUIComponent))]
     [FriendOfAttribute(typeof(MicroDustConfigureArmyUIComponent))]
+    [FriendOfAttribute(typeof(ET.Client.MicroDustConfigureArmyComponent))]
+    [FriendOfAttribute(typeof(ET.MicroDustArmy))]
     public static partial class MicroDustConfigureArmyUISystem
     {
         [EntitySystem]
@@ -42,7 +44,7 @@ namespace ET.Client
             self.DisplayHeroInfo();
 
             self.Back.GetComponent<Button>().onClick.AddListener(() => { self.OnBackClick().Coroutine(); });
-            for(int i = 0; i < self.Heros.Count; i++)
+            for (int i = 0; i < self.Heros.Count; i++)
             {
                 var hero = self.Heros[i];
                 hero.GetComponent<Button>().onClick.AddListener(() => { self.ConfigureHero(hero).Coroutine(); });
@@ -52,7 +54,7 @@ namespace ET.Client
         private static void DisplayHeroInfo(this MicroDustConfigureArmyUIComponent self)
         {
             var index = self.Root().GetComponent<MicroDustConfigureArmyComponent>().SelectedArmy;
-            var army = self.Root().GetComponent<MicroDustArmyComponent>().Armies[index];
+            var army = self.Root().CurrentScene().GetComponent<MicroDustPlayerComponent>().GetComponent<MicroDustArmyComponent>().GetArmyByIndex(index);
             var heros = self.Root().GetComponent<MicroDustHeroComponent>();
             for (int i = 0; i < self.Heros.Count; i++)
             {

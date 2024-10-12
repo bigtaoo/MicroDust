@@ -40,7 +40,7 @@ namespace ET.Client
         {
             //Log.Warning($"player component is null {self.Root().CurrentScenePlayerComponent() == null}");
             var army = self.Root().PlayerComponent().GetComponent<MicroDustArmyComponent>();
-            Log.Warning($"army is null: {army == null}");
+            //Log.Warning($"army is null: {army == null}");
             var heros = self.Root().GetComponent<MicroDustHeroComponent>();
             for (int i = 0; i < self.Armies.Count; i++)
             {

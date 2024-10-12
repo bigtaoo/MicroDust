@@ -22,7 +22,7 @@
 
         public static MicroDustArmy GetArmyByIndex(this MicroDustArmyComponent self, int index)
         {
-            Log.Warning($"armies are null: {self == null}");
+            //Log.Warning($"armies count: {self.Armies.Count}, index: {index}");
             return self.Armies[index];
         }
 

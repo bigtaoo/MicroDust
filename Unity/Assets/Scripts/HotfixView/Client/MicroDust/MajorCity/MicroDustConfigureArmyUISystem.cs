@@ -54,7 +54,7 @@ namespace ET.Client
         private static void DisplayHeroInfo(this MicroDustConfigureArmyUIComponent self)
         {
             var index = self.Root().GetComponent<MicroDustConfigureArmyComponent>().SelectedArmy;
-            var army = self.Root().CurrentScene().GetComponent<MicroDustPlayerComponent>().GetComponent<MicroDustArmyComponent>().GetArmyByIndex(index);
+            var army = self.Root().PlayerComponent().GetComponent<MicroDustArmyComponent>().GetArmyByIndex(index);
             var heros = self.Root().GetComponent<MicroDustHeroComponent>();
             for (int i = 0; i < self.Heros.Count; i++)
             {

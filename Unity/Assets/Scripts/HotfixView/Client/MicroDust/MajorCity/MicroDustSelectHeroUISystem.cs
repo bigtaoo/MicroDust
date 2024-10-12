@@ -110,7 +110,7 @@ namespace ET.Client
                 hero.transform.Find(MicroDustSelectHeroUIComponent.ChooseButton).gameObject.SetActive(false);
             }
             var heroId = panel.transform.Find("heroid").GetComponent<TMP_Text>().text;
-            var armyComponent = self.Root().CurrentScene().GetComponent<MicroDustPlayerComponent>().GetComponent<MicroDustArmyComponent>();
+            var armyComponent = self.Root().PlayerComponent().GetComponent<MicroDustArmyComponent>();
             if (!armyComponent.IsHeroInUse(heroId))
             {
                 panel.transform.Find(MicroDustSelectHeroUIComponent.ChooseButton).gameObject.SetActive(true);

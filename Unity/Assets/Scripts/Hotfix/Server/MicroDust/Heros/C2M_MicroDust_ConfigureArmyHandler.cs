@@ -21,8 +21,14 @@
             var player = unit.Parent as MicroDustPlayerComponent;
             var root = player.Root();
             var army = player.GetComponent<MicroDustArmyComponent>();
+            Log.Warning($"army is null: {army == null}");
             if (army == null)
             {
+                army = player.AddComponent<MicroDustArmyComponent>();
+            }
+            if (army.Armies.Count == 0)
+            {
+                player.RemoveComponent<MicroDustArmyComponent>();
                 army = player.AddComponent<MicroDustArmyComponent>();
             }
             if (army.IsHeroInUse(request.HeroId))
@@ -30,7 +36,7 @@
                 response.Error = 30003;
                 return;
             }
-            //Log.Debug($"Army: {army.ToJson()}");
+            Log.Warning($"Army: {army.ToJson()}");
             army.userId = player.UserId;
             //army.Armies[request.Army].HeroIds[request.Position] = request.HeroId;
             //army.Armies[0].HeroIds[0] = request.HeroId;

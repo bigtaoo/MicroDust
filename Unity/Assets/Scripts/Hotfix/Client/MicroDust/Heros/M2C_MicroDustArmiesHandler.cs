@@ -5,12 +5,12 @@
     [FriendOfAttribute(typeof(ET.MicroDustArmy))]
     public class M2C_MicroDustArmiesHandler : MessageHandler<Scene, M2C_MicroDustArmies>
     {
-        protected override async ETTask Run(Scene entity, M2C_MicroDustArmies message)
+        protected override async ETTask Run(Scene scene, M2C_MicroDustArmies message)
         {
             Log.Debug($"Army: {message.ToJson()}");
 
-            entity.RemoveComponent<MicroDustArmyComponent>();
-            var army = entity.GetComponent<MicroDustPlayerComponent>().AddComponent<MicroDustArmyComponent>();
+            scene.PlayerComponent().RemoveComponent<MicroDustArmyComponent>();
+            var army = scene.PlayerComponent().AddComponent<MicroDustArmyComponent>();
             for (int i = 0; i < message.Arimes.Count; i++)
             {
                 var a = message.Arimes[i];

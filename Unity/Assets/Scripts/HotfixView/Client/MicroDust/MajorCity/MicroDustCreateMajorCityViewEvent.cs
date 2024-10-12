@@ -3,6 +3,7 @@
 namespace ET.Client
 {
     [Event(SceneType.MicroDustCurrent)]
+    [FriendOfAttribute(typeof(ET.Client.MicroDustTileMapComponent))]
     public class MicroDustCreateMajorCityViewEvent : AEvent<Scene, MicroDustMajorCityView>
     {
         protected override async ETTask Run(Scene scene, MicroDustMajorCityView a)
@@ -12,7 +13,7 @@ namespace ET.Client
             var city1 = rc.Get<ResourceTile>("city1");
             var city2 = rc.Get<ResourceTile>("city2");
             var city3 = rc.Get<ResourceTile>("city3");
-            var majorCity = scene.GetComponent<MicroDustMajorCityComponent>();
+            var majorCity = scene.GetComponent<MicroDustPlayerComponent>().GetComponent<MicroDustMajorCityComponent>();
             DrawMajorCity(majorCity.MajorCityInfo, map.TileMapBuildings, city1, city2, city3);
             UpdateCameraPosition(scene, majorCity.MajorCityInfo, map.TileMapResources);
             await ETTask.CompletedTask;

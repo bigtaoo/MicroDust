@@ -86,7 +86,7 @@ namespace ET.Client
             self.Command.GetComponent<TMPro.TextMeshProUGUI>().text = tileInfo.ArmyCommandType.ToString();
             self.Target.GetComponent<TMPro.TextMeshProUGUI>().text = tileInfo.TileType;
 
-            var army = self.Root().CurrentScene().GetComponent<MicroDustPlayerComponent>().GetComponent<MicroDustArmyComponent>();
+            var army = self.Root().PlayerComponent().GetComponent<MicroDustArmyComponent>();
             var heroComponent = self.Root().GetComponent<MicroDustHeroComponent>();
             //Log.Debug($"Hero, {heroComponent == null}");
             for (int i = 0; i < 5; ++i)

@@ -1,7 +1,12 @@
 ﻿namespace ET.Server
 {
-    public class MicroDustBattleArmy
+    public struct MicroDustBattleArmy
     {
-        public MicroDustBattleHero[] Heros { get; set; } = new MicroDustBattleHero[6];
+        public MicroDustBattleArmy(MicroDustBattleHero[] heros)
+        {
+            Heros = heros;
+        }
+
+        public MicroDustBattleHero[] Heros { get; set; }
     }
 }

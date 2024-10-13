@@ -11,6 +11,7 @@
 
             scene.PlayerComponent().RemoveComponent<MicroDustArmyComponent>();
             var army = scene.PlayerComponent().AddComponent<MicroDustArmyComponent>();
+            //Log.Warning($"army count: {army.Armies.Count}");
             for (int i = 0; i < message.Arimes.Count; i++)
             {
                 var a = message.Arimes[i];

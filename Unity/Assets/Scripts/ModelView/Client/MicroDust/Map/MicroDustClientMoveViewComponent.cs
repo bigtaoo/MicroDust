@@ -1,5 +1,6 @@
 ﻿namespace ET.Client
 {
+    [ComponentOf(typeof(Scene))]
     public class MicroDustClientMoveViewComponent : Entity, IAwake, IUpdate
     {
         public string ArmyId;

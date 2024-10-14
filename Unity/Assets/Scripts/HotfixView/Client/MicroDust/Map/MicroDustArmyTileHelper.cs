@@ -2,9 +2,10 @@
 
 namespace ET.Client
 {
+    [FriendOfAttribute(typeof(ET.Client.MicroDustTileMapComponent))]
     public static class MicroDustArmyTileHelper
     {
-        private static Dictionary<MicroDustArmyDisplayType, ResourceTile> ArmyTiles = new();
+        private static readonly Dictionary<MicroDustArmyDisplayType, ResourceTile> ArmyTiles = new();
 
         public static ResourceTile GetArmyTile(Scene scene, MicroDustArmyDisplayType armyType)
         {

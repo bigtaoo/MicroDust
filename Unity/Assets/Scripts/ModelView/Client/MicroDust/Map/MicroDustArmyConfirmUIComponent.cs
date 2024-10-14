@@ -2,6 +2,7 @@
 
 namespace ET.Client
 {
+    [ComponentOf(typeof(UI))]
     public class MicroDustArmyConfirmUIComponent : Entity, IAwake
     {
         public GameObject Back;

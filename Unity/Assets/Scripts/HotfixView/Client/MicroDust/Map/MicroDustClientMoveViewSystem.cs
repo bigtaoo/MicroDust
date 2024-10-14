@@ -4,6 +4,7 @@ namespace ET.Client
 {
     [EntitySystemOf(typeof(MicroDustClientMoveViewComponent))]
     [FriendOf(typeof(MicroDustClientMoveViewComponent))]
+    [FriendOfAttribute(typeof(ET.Client.MicroDustTileMapComponent))]
     public static partial class MicroDustClientMoveViewSystem
     {
         [EntitySystem]

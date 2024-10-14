@@ -3,6 +3,8 @@
 namespace ET.Client
 {
     [Event(SceneType.MicroDustCurrent)]
+    [FriendOfAttribute(typeof(ET.Client.MicroDustTileMapComponent))]
+    [FriendOfAttribute(typeof(ET.Client.MicroDustClientMoveViewComponent))]
     public class MicroDustUpdateArmyPositionsEvent : AEvent<Scene, MicroDustUpdateArmyPosition>
     {
         protected override async ETTask Run(Scene scene, MicroDustUpdateArmyPosition a)

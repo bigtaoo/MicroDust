@@ -45,6 +45,7 @@ namespace ET.Client
             for (int i = 0; i < self.Armies.Count; i++)
             {
                 var firstHeroId = army.GetArmyByIndex(i).HeroIds[0];
+                //Log.Warning($"first army is null: {string.IsNullOrEmpty(firstHeroId)}");
                 if (!string.IsNullOrEmpty(firstHeroId))
                 {
                     self.Armies[i].GetComponentInChildren<TMP_Text>().text =

@@ -96,8 +96,13 @@ namespace ET.Client
                 {
                     continue;
                 }
+                if (string.IsNullOrEmpty(a.HeroIds[0]))
+                {
+                    continue;
+                }
 
                 var config1 = heroComponent.GetHeroConfigById(a.HeroIds[0]);
+                //Log.Warning($"config is null: {config1 == null} hero id: {a.HeroIds[0]}");
                 self.Names[i].GetComponent<TMPro.TextMeshProUGUI>().text = config1.Name;
                 var hero1 = heroComponent.GetHeroById(a.HeroIds[0]);
                 self.Levels[i].GetComponent<TMPro.TextMeshProUGUI>().text = hero1.Level.ToString();

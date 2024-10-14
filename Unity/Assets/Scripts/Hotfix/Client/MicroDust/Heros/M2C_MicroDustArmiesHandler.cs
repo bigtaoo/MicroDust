@@ -17,10 +17,11 @@
                 var a = message.Arimes[i];
                 for (int j = 0; j < a.HeroIds.Count; j++)
                 {
-                    var armyRef = army.GetArmyByIndex(j);
-                    armyRef.HeroIds[j] = a.HeroIds[j];
+                    army.Armies[i].HeroIds[j] = a.HeroIds[j];
                 }
             }
+
+            //Log.Warning($"army config: {army.ToJson()}");
 
             await ETTask.CompletedTask;
         }

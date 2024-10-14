@@ -6,7 +6,7 @@
     {
         protected override async ETTask Run(Scene scene, M2M_MicroDust_UnitTransferRequest request, M2M_MicroDust_UnitTransferResponse response)
         {
-            Log.Warning("M2M_MicroDust_UnitTransferHandler");
+            //Log.Warning("M2M_MicroDust_UnitTransferHandler");
             scene.RemoveComponent<MicroDustPlayerComponent>();
             var playerComponent = scene.AddComponent(MongoHelper.Deserialize<MicroDustPlayerComponent>(request.Unit)) as MicroDustPlayerComponent;
 

@@ -2,6 +2,7 @@
 
 namespace ET
 {
+    [EnableClass]
     public class MicroDustArmy
     {
         public ListComponent<string> HeroIds { get; set; } = new();

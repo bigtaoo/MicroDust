@@ -1,5 +1,6 @@
 ﻿namespace ET
 {
+    [EnableClass]
     public class MicroDustHero
     {
         public string Id { get; set; }

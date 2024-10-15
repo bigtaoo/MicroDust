@@ -14,5 +14,11 @@
             scene.GetComponent<UIComponent>().Remove(uiType);
             await ETTask.CompletedTask;
         }
+
+        [EnableAccessEntiyChild]
+        public static UI GetUI(Entity scene, string uiType)
+        {
+            return scene.GetComponent<UIComponent>().Get(uiType);
+        }
     }
 }

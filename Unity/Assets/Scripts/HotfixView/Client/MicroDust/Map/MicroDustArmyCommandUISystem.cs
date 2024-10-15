@@ -95,7 +95,7 @@ namespace ET.Client
                 if (a.HeroIds.FirstOrDefault() == null)
                 {
                     continue;
-                }
+                }   
                 if (string.IsNullOrEmpty(a.HeroIds[0]))
                 {
                     continue;

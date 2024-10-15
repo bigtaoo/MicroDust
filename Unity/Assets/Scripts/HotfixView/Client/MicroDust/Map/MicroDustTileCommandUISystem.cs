@@ -7,6 +7,7 @@ namespace ET.Client
     [EntitySystemOf(typeof(MicroDustTileCommandUIComponent))]
     [FriendOf(typeof(MicroDustTileCommandUIComponent))]
     [FriendOfAttribute(typeof(MicroDustTileCommandUIComponent))]
+    [FriendOfAttribute(typeof(ET.Client.MicroDustSelectedMapTileComponent))]
     public static partial class MicroDustTileCommandUISystem
     {
         [EntitySystem]
@@ -43,6 +44,8 @@ namespace ET.Client
             {
                 await MicroDustHerosHelper.GetHerosInfo(self.Root(), UIType.MicroDustArmyCommand);
             }
+
+            await UIHelper.Remove(self.Root(), UIType.MicroDustTileCommand);
         }
 
         private static async ETTask OnOccupyClick(this MicroDustTileCommandUIComponent self)
@@ -58,6 +61,8 @@ namespace ET.Client
             {
                 await MicroDustHerosHelper.GetHerosInfo(self.Root(), UIType.MicroDustArmyCommand);
             }
+
+            await UIHelper.Remove(self.Root(), UIType.MicroDustTileCommand);
         }
     }
 }

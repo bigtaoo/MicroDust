@@ -5,6 +5,7 @@ namespace ET.Client
 {
     [EntitySystemOf(typeof(MicroDustCameraComponent))]
     [FriendOf(typeof(MicroDustCameraComponent))]
+    [FriendOfAttribute(typeof(ET.Client.MicroDustTileMapComponent))]
     public static partial class MicroDustCameraSystem
     {
         [EntitySystem]
@@ -72,6 +73,7 @@ namespace ET.Client
                 //Debug.Log($"TileMap, name:{tile.name}, type:{tile.type}, x:{tpos.x}, y:{tpos.y}");
 
                 MicroDustSelectedMapTileHelper.OnTileMapSelected(self.Root(), tile.type.ToString(), tpos.x, tpos.y);
+                await UIHelper.Remove(self.Root(), UIType.MicroDustTileCommand);
                 await UIHelper.Create(self.Root(), UIType.MicroDustTileCommand, UILayer.Mid);
                 //Log.Debug($"TileMap, mouse position: {Input.mousePosition.ToString()}");
                 //tileCommandUI.GameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);

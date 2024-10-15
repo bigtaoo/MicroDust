@@ -38,7 +38,14 @@ namespace ET.Client
 
         private static async ETTask OnMoreClick(this MicroDustGameMainUIComponent self)
         {
-            await UIHelper.Create(self.Root(), UIType.MicroDustMore, UILayer.Mid);
+            if (UIHelper.GetUI(self.Root(), UIType.MicroDustMore) != null)
+            {
+                await UIHelper.Remove(self.Root(), UIType.MicroDustMore);
+            }
+            else
+            {
+                await UIHelper.Create(self.Root(), UIType.MicroDustMore, UILayer.Mid);
+            }
         }
 
         private static async ETTask OnSkillsClick(this MicroDustGameMainUIComponent self)

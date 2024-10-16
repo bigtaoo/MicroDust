@@ -73,6 +73,12 @@ namespace ET
 		public int StartLevel { get; set; }
 		/// <summary>MaxLevel</summary>
 		public int MaxLevel { get; set; }
+		/// <summary>Stone</summary>
+		public int[] Stone { get; set; }
+		/// <summary>Wood</summary>
+		public int[] Wood { get; set; }
+		/// <summary>Metal</summary>
+		public int[] Metal { get; set; }
 
 	}
 }

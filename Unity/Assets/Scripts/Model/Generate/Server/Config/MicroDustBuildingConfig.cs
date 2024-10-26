@@ -79,6 +79,8 @@ namespace ET
 		public int[] Wood { get; set; }
 		/// <summary>Metal</summary>
 		public int[] Metal { get; set; }
+		/// <summary>Description</summary>
+		public string Description { get; set; }
 
 	}
 }
